@@ -1,0 +1,116 @@
+<Map background-color="red" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+
+  <Style name="ocean-style">
+    <Rule>
+      <PolygonSymbolizer fill="#b9e0df" simplify="0.9" smooth="1.0" />
+    </Rule>
+  </Style>
+  <Layer name="ocean" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <StyleName>ocean-style</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">data/ne_10m_ocean.shp</Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="land-style">
+    <Rule>
+      <PolygonSymbolizer fill="#f7f2ee" simplify="0.9" smooth="1.0" />
+    </Rule>
+  </Style>
+  <Layer name="land" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <StyleName>land-style</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">data/ne_10m_land.shp</Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="urban-areas-style">
+    <Rule>
+      <PolygonSymbolizer fill="#efe7b6" simplify="0.9" smooth="1.0" />
+      <!--<LineSymbolizer stroke="#f2ebe3" stroke-width="2" stroke-opacity="0.5" smooth="1.0" />-->
+    </Rule>
+  </Style>
+  <Layer name="urban-areas" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <StyleName>urban-areas-style</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">data/ne_10m_urban_areas.shp</Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="coastline-style">
+    <Rule>
+      <LineSymbolizer stroke="#f2ebe3" stroke-width="1" smooth="1.0" />
+    </Rule>
+  </Style>
+  <Layer name="coastline" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <StyleName>coastline-style</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">data/ne_10m_coastline.shp</Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="bathymetry-6000-style">
+    <Rule>
+      <Filter>[scalerank] &lt; 3</Filter>
+      <PolygonSymbolizer fill="#1a8b89" fill-opacity="0.1" simplify="0.9" smooth="1.0"/>
+    </Rule>
+  </Style>
+  <Layer name="bathymetry-6000" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <StyleName>bathymetry-6000-style</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">data/ne_10m_bathymetry_E_6000.shp</Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="bathymetry-1000-style">
+    <Rule>
+      <PolygonSymbolizer fill="#1a8b89" fill-opacity="0.1" simplify="0.9" smooth="1.0"/>
+      <Filter>[scalerank] &lt; 3</Filter>
+    </Rule>
+  </Style>
+  <Layer name="bathymetry-1000" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <StyleName>bathymetry-1000-style</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">data/ne_10m_bathymetry_J_1000.shp</Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="bathymetry-200-style">
+    <Rule>
+      <PolygonSymbolizer fill="#5db6b0" fill-opacity="0.1" simplify="0.9" smooth="1.0"/>
+      <Filter>[scalerank] &lt; 3</Filter>
+    </Rule>
+  </Style>
+  <Layer name="bathymetry-200" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <StyleName>bathymetry-200-style</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">data/ne_10m_bathymetry_K_200.shp</Parameter>
+    </Datasource>
+  </Layer>
+
+  <!--
+  <Style name="marine-polys-style">
+    <Rule>
+      <Filter>[scalerank] &lt; 3</Filter>
+      <TextSymbolizer face-name="SignPainter HouseScript" size="20" fill="#1a8b89" halo-fill="#b9e0df" halo-radius="1" placement="point" allow-overlap="false">
+          [name]
+      </TextSymbolizer>
+    </Rule>
+  </Style>
+  <Layer name="marine-polys" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <StyleName>marine-polys-style</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">data/ne_10m_geography_marine_polys.shp</Parameter>
+    </Datasource>
+  </Layer>
+  -->
+
+</Map>
