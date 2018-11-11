@@ -1,0 +1,11 @@
+@namespace svg "http://www.w3.org/2000/svg";
+
+.hide-me-from-older-browsers {
+  display: none;
+  visibility: hidden;
+}
+
+svg|g.hide-me-from-older-browsers {
+  display: inline;
+  visibility: visible;
+}
