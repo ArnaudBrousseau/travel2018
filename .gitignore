@@ -1,4 +1,4 @@
 *.sw[a-z]
 .DS_Store
-data
+map/data
 venv

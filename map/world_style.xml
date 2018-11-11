@@ -3,7 +3,6 @@
   <Style name="land-style">
     <Rule>
       <PolygonSymbolizer fill="#b9e0df" simplify="0.9" smooth="1.0" />
-	  <LineSymbolizer stroke="#5db6b0" stroke-width="1" stroke-opacity="0.7" smooth="1.0" />
     </Rule>
   </Style>
   <Layer name="land" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
