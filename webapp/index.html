@@ -17,48 +17,34 @@
   <!--[if gt IE 8]><!-->
   <switch>
     <g class="hide-me-from-older-browsers">
-      <path id="sf-to-paris" d="M237,180 Q515,50 757,150" fill="none" stroke="#222" stroke-width="1" />
-      <path id="paris-to-sf" d="M237,180 Q515,230 757,150" fill="none" stroke="#aaa" stroke-width="1" />
-      <path id="paris-to-singapore" d="M757,150 Q1050,150 1170,335" fill="none" stroke="#222" stroke-width="1" />
-
-      <circle cx="237" cy="180" r="4" stroke="#db9510" fill="#e9bb63" />
-      <circle cx="757" cy="150" r="4" stroke="#db9510" fill="#e9bb63" />
-      <circle cx="1170" cy="335" r="4" stroke="#db9510" fill="#e9bb63" />
-
-
-
-      <filter id="ryan-sad" x="0%" y="0%" width="100%" height="100%">
-        <feImage xlink:href="assets/ryan_sad.png"/>
-      </filter>
-      <circle filter="url(#ryan-sad)" cx="237" cy="140" r="33" />
-
-      <filter id="arnaud-sad" x="0%" y="0%" width="100%" height="100%">
-        <feImage xlink:href="assets/arnaud_sad.png"/>
-      </filter>
-      <circle id="arnaud-sad-circle" filter="url(#arnaud-sad)" cx="0" cy="-50" r="33" />   
-
-      <g id="together">
-        <filter id="arnaud-happy" x="0%" y="0%" width="100%" height="100%">
-          <feImage xlink:href="assets/arnaud_happy.png"/>
+      <g id="paths"></g>
+      <g id="places"></g>
+      <g id="animations"></g>
+      
+      <g id="faces">
+        <filter id="ryan-sad" x="0%" y="0%" width="100%" height="100%">
+          <feImage xlink:href="assets/ryan_sad.png"/>
         </filter>
-        <circle filter="url(#arnaud-happy)" cx="737" cy="100" r="33" />
+        <circle filter="url(#ryan-sad)" cx="237" cy="140" r="33" />
 
-        <filter id="ryan-happy" x="0%" y="0%" width="100%" height="100%">
-          <feImage xlink:href="assets/ryan_happy.png"/>
+        <filter id="arnaud-sad" x="0%" y="0%" width="100%" height="100%">
+          <feImage xlink:href="assets/arnaud_sad.png"/>
         </filter>
-        <circle filter="url(#ryan-happy)" cx="787" cy="100" r="33" />
-      </g>
+        <circle id="arnaud-sad-circle" filter="url(#arnaud-sad)" cx="0" cy="-50" r="33" />   
 
+        <g id="together">
+          <filter id="arnaud-happy" x="0%" y="0%" width="100%" height="100%">
+            <feImage xlink:href="assets/arnaud_happy.png"/>
+          </filter>
+          <circle filter="url(#arnaud-happy)" cx="737" cy="100" r="33" />
 
-    <g id="animations">
-        <animateMotion xlink:href="#arnaud-sad-circle" dur="0.7s" begin="0s" fill="freeze" id="one">
-        <mpath xlink:href="#sf-to-paris" />
-        <animateMotion xlink:href="#arnaud-sad-circle" dur="0.7s" begin="one.end" fill="freeze">
-        <mpath xlink:href="#paris-to-singapore" />
-      </g>
-    </g>
-  </animateMotion>
-    </g>
+          <filter id="ryan-happy" x="0%" y="0%" width="100%" height="100%">
+            <feImage xlink:href="assets/ryan_happy.png"/>
+          </filter>
+          <circle filter="url(#ryan-happy)" cx="787" cy="100" r="33" />
+        </g>
+      </g> <!-- faces -->
+    </g> <!-- hide-me-from-older-browsers -->
 
     <foreignObject>
       <!--<![endif]-->
