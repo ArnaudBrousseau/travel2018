@@ -2,3 +2,5 @@
 .DS_Store
 map/data
 venv
+credentials.json
+token.json
