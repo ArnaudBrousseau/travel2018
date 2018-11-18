@@ -15,6 +15,26 @@ svg|g.hide-me-from-older-browsers {
 }
 
 /******************************************************************************
+ * Table styles
+ *****************************************************************************/
+
+.together {
+  background-color: #c6f9c6;
+}
+table {
+  text-align:center;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  margin: 50px auto;
+}
+td {
+  border: 2px solid white;
+  padding: 4px;
+}
+
+/******************************************************************************
  * Range styles, greatly inspired by:
  * https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
  *****************************************************************************/
