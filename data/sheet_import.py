@@ -12,6 +12,25 @@ LOCATIONS = 'Locations!A2:C'
 GEOCODES = 'Geocodes!A2:C'
 
 
+def generate_table(location_data):
+    table = '<table>\n'
+    table += '  <tr>\n'
+    table += '    <th>Date</th><th>Arnaud</th><th>Ryan</th>\n'
+    table += '  </tr>\n'
+
+    for date, arnaud_location, ryan_location in location_data:
+        if arnaud_location == ryan_location:
+            table += '  <tr class="together">\n'
+        else:
+            table += '  <tr>\n'
+        table += '    <td>{}</td>\n'.format(date)
+        table += '    <td>{}</td>\n'.format(arnaud_location)
+        table += '    <td>{}</td>\n'.format(ryan_location)
+        table += '  </tr>\n'
+
+    table += '</table>\n'
+    return table
+
 def main():
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
@@ -51,7 +70,11 @@ def main():
             (row[0], geocodes[row[1]], geocodes[row[2]])
             for row in locations if len(row) == 3
         ]
-        print(location_data)
+
+    table = generate_table(location_data)
+    print(table)
+    with open('locations.html', 'w') as f:
+        f.write(table)
 
 if __name__ == '__main__':
     main()
