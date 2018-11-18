@@ -1,4 +1,4 @@
-<Map background-color="white" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+<Map background-color="white" srs="+proj=eqc">
 
   <Style name="land-style">
     <Rule>

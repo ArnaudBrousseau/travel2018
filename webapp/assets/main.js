@@ -16,6 +16,39 @@ var featureDetection = function() {
 }
 
 /******************************************************************************
+ * Map-related math
+ *****************************************************************************/
+
+MAP_WIDTH = 1200;
+MAP_HEIGHT = 579;
+
+/**
+ * Goes from "('42.0450722', '-87.6876969')" to {x:..., y:...}
+ */
+var toXY = function(latlngstr) {
+  var latlng = latlngstr.match(/([0-9\.-]+)/g);
+  if (latlng.length !== 2) {
+    console.error('latlng.length should be 2! latlng: ' + latlng);
+  }
+
+  var lat = parseFloat(latlng[0]);
+  var lng = parseFloat(latlng[1]);
+
+  // Not quite sure why, but the points plotted here aren't correctly aligning
+  // on the y axis. Maybe because the North Pole isn't there in the set of
+  // polygons used to generate our map background?
+  var FUDGE_FACTOR = 15;
+
+  return {
+    x: ((MAP_WIDTH/360.0) * (180 + lng)),
+    y: ((MAP_HEIGHT/180.0) * (90 - lat) - FUDGE_FACTOR)
+  }
+};
+
+console.log("paris", toXY("('48.856614', '2.3522219')"));
+
+
+/******************************************************************************
  * SVG Manipulation
  *****************************************************************************/
 
@@ -71,8 +104,13 @@ var createPlace = function(placeId, x, y) {
   });
 };
 
-createPlace("sf", 237, 180);
-createPlace("paris", 757, 150);
+
+var paris = toXY("('48.856614', '2.3522219')");
+var evanston = toXY("('42.0450722', '-87.6876969')");
+var sf = toXY("('37.7749295', '-122.4194155')");
+createPlace("evanston", evanston.x, evanston.y);
+createPlace("paris", paris.x, paris.y);
+createPlace("sf", sf.x, sf.y);
 
 /**
  * Adds animations to our #animations element. Each animation looks like:
@@ -116,7 +154,7 @@ var onSliderChange = function(e) {
 };
 
 /******************************************************************************
- *
+ * Ready? Get set? Go.
  *****************************************************************************/
 var start = function() {
   setUpSlider();
