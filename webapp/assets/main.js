@@ -142,7 +142,13 @@ setTimeout(function() {
 
 var setUpSlider = function() {
   document.getElementById('day-slider').addEventListener('change', onSliderChange);
+  // Show controls
+  document.getElementsByClassName('controls')[0].classList.remove('hidden');
 };
+
+var showMap = function() {
+  document.getElementsByClassName('map')[0].classList.remove('hidden');
+}
 
 var onSliderChange = function(e) {
   /**
@@ -158,4 +164,9 @@ var onSliderChange = function(e) {
  *****************************************************************************/
 var start = function() {
   setUpSlider();
+  showMap();
 };
+
+requestAnimationFrame(function() {
+  start();
+});

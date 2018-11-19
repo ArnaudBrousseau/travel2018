@@ -13,14 +13,14 @@
 </head>
 
 <body>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="579" version="1.0">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="579" version="1.0" class="map hidden fade">
   <!--[if gt IE 8]><!-->
   <switch>
     <g class="hide-me-from-older-browsers">
       <g id="paths"></g>
       <g id="places"></g>
       <g id="animations"></g>
-      
+
       <g id="faces">
         <filter id="ryan-sad" x="0%" y="0%" width="100%" height="100%">
           <feImage xlink:href="assets/ryan_sad.png"/>
@@ -30,7 +30,7 @@
         <filter id="arnaud-sad" x="0%" y="0%" width="100%" height="100%">
           <feImage xlink:href="assets/arnaud_sad.png"/>
         </filter>
-        <circle id="arnaud-sad-circle" filter="url(#arnaud-sad)" cx="0" cy="-50" r="33" />   
+        <circle id="arnaud-sad-circle" filter="url(#arnaud-sad)" cx="0" cy="-50" r="33" />
 
         <g id="together">
           <filter id="arnaud-happy" x="0%" y="0%" width="100%" height="100%">
@@ -53,7 +53,7 @@
   </switch>
   </svg>
 
-  <div class="controls">
+  <div class="controls hidden fade">
     <div class="jump-to">
       <span class="l31">January</span>
       <span class="l28">February</span>
@@ -69,1626 +69,1619 @@
       <span class="l30">December</span>
     </div>
 
-    <!-- TODO: generate the input and the datalist from the table data instead, with JS -->
     <input type="range" name="day" min="1" max="365" value="32" step="1" list="tickmarks" id="day-slider"></input>
-    <datalist id="tickmarks">
-      <option value="1" label="Jan">
-      <option value="2">
-      <option value="3">
-      <!-- etc -->
-    </datalist>
   </div>
+
   <table>
     <tr>
       <th>Date</th><th>Arnaud</th><th>Ryan</th>
     </tr>
     <tr class="together">
       <td>2018-01-01</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-01-02</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-01-03</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-04</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-05</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-06</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-07</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-08</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-09</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-10</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-11</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-12</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-13</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-14</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-15</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-16</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-17</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-18</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-19</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-20</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-21</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-22</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-23</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-24</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-25</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-26</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-27</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-28</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-29</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-30</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-01-31</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-02-01</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-02-02</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-02-03</td>
-      <td>('47.322047', '5.04148')</td>
-      <td>('47.322047', '5.04148')</td>
+      <td>Dijon ('47.322047', '5.04148')</td>
+      <td>Dijon ('47.322047', '5.04148')</td>
     </tr>
     <tr class="together">
       <td>2018-02-04</td>
-      <td>('47.322047', '5.04148')</td>
-      <td>('47.322047', '5.04148')</td>
+      <td>Dijon ('47.322047', '5.04148')</td>
+      <td>Dijon ('47.322047', '5.04148')</td>
     </tr>
     <tr class="together">
       <td>2018-02-05</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-02-06</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-02-07</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-02-08</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-02-09</td>
-      <td>('46.2043907', '6.1431577')</td>
-      <td>('46.2043907', '6.1431577')</td>
+      <td>Geneva, Switzerland ('46.2043907', '6.1431577')</td>
+      <td>Geneva, Switzerland ('46.2043907', '6.1431577')</td>
     </tr>
     <tr class="together">
       <td>2018-02-10</td>
-      <td>('46.2043907', '6.1431577')</td>
-      <td>('46.2043907', '6.1431577')</td>
+      <td>Geneva, Switzerland ('46.2043907', '6.1431577')</td>
+      <td>Geneva, Switzerland ('46.2043907', '6.1431577')</td>
     </tr>
     <tr class="together">
       <td>2018-02-11</td>
-      <td>('46.2043907', '6.1431577')</td>
-      <td>('46.2043907', '6.1431577')</td>
+      <td>Geneva, Switzerland ('46.2043907', '6.1431577')</td>
+      <td>Geneva, Switzerland ('46.2043907', '6.1431577')</td>
     </tr>
     <tr class="together">
       <td>2018-02-12</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-02-13</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-02-14</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-02-15</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-02-16</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-02-17</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-02-18</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-02-19</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-02-20</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-02-21</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-02-22</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('45.923697', '6.869433')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Chamonix, France ('45.923697', '6.869433')</td>
     </tr>
     <tr>
       <td>2018-02-23</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('45.923697', '6.869433')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Chamonix, France ('45.923697', '6.869433')</td>
     </tr>
     <tr>
       <td>2018-02-24</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('45.923697', '6.869433')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Chamonix, France ('45.923697', '6.869433')</td>
     </tr>
     <tr>
       <td>2018-02-25</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('45.923697', '6.869433')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Chamonix, France ('45.923697', '6.869433')</td>
     </tr>
     <tr>
       <td>2018-02-26</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('45.923697', '6.869433')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Chamonix, France ('45.923697', '6.869433')</td>
     </tr>
     <tr>
       <td>2018-02-27</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-02-28</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-03-01</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-03-02</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-03-03</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-04</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-05</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-06</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-07</td>
-      <td>('43.0481221', '-76.1474244')</td>
-      <td>('43.0481221', '-76.1474244')</td>
+      <td>Syracuse ('43.0481221', '-76.1474244')</td>
+      <td>Syracuse ('43.0481221', '-76.1474244')</td>
     </tr>
     <tr class="together">
       <td>2018-03-08</td>
-      <td>('43.0481221', '-76.1474244')</td>
-      <td>('43.0481221', '-76.1474244')</td>
+      <td>Syracuse ('43.0481221', '-76.1474244')</td>
+      <td>Syracuse ('43.0481221', '-76.1474244')</td>
     </tr>
     <tr class="together">
       <td>2018-03-09</td>
-      <td>('37.8516366', '15.2853127')</td>
-      <td>('37.8516366', '15.2853127')</td>
+      <td>Taormina ('37.8516366', '15.2853127')</td>
+      <td>Taormina ('37.8516366', '15.2853127')</td>
     </tr>
     <tr class="together">
       <td>2018-03-10</td>
-      <td>('37.8516366', '15.2853127')</td>
-      <td>('37.8516366', '15.2853127')</td>
+      <td>Taormina ('37.8516366', '15.2853127')</td>
+      <td>Taormina ('37.8516366', '15.2853127')</td>
     </tr>
     <tr class="together">
       <td>2018-03-11</td>
-      <td>('37.8516366', '15.2853127')</td>
-      <td>('37.8516366', '15.2853127')</td>
+      <td>Taormina ('37.8516366', '15.2853127')</td>
+      <td>Taormina ('37.8516366', '15.2853127')</td>
     </tr>
     <tr class="together">
       <td>2018-03-12</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-13</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-03-14</td>
-      <td>('53.5510846', '9.9936819')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hamburg ('53.5510846', '9.9936819')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-03-15</td>
-      <td>('53.5510846', '9.9936819')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hamburg ('53.5510846', '9.9936819')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-03-16</td>
-      <td>('53.5510846', '9.9936819')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hamburg ('53.5510846', '9.9936819')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-03-17</td>
-      <td>('44.80583', '-0.630386')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Pessac, France ('44.80583', '-0.630386')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-03-18</td>
-      <td>('44.895295', '-0.7181')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Saint-Medard-en-Jalles ('44.895295', '-0.7181')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-19</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-20</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-21</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-22</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-23</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-24</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-03-25</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-03-26</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-27</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-28</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-29</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-30</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-03-31</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-01</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-04-02</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-03</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-04</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-05</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-06</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-07</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-08</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-09</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-10</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-11</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-12</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-13</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-14</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-15</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-16</td>
-      <td>('53.5510846', '9.9936819')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hamburg ('53.5510846', '9.9936819')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-17</td>
-      <td>('53.5510846', '9.9936819')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hamburg ('53.5510846', '9.9936819')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-18</td>
-      <td>('53.5510846', '9.9936819')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hamburg ('53.5510846', '9.9936819')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-19</td>
-      <td>('53.5510846', '9.9936819')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hamburg ('53.5510846', '9.9936819')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-20</td>
-      <td>('53.5510846', '9.9936819')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hamburg ('53.5510846', '9.9936819')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-21</td>
-      <td>('53.5510846', '9.9936819')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hamburg ('53.5510846', '9.9936819')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-22</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-23</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-24</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-25</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-26</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-04-27</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-28</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-29</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-04-30</td>
-      <td>('-1.2920659', '36.8219462')</td>
-      <td>('-1.2920659', '36.8219462')</td>
+      <td>Nairobi, Kenya ('-1.2920659', '36.8219462')</td>
+      <td>Nairobi, Kenya ('-1.2920659', '36.8219462')</td>
     </tr>
     <tr class="together">
       <td>2018-05-01</td>
-      <td>('-1.4065513', '34.906551')</td>
-      <td>('-1.4065513', '34.906551')</td>
+      <td>Masai Mara Park, Kenya ('-1.4065513', '34.906551')</td>
+      <td>Masai Mara Park, Kenya ('-1.4065513', '34.906551')</td>
     </tr>
     <tr class="together">
       <td>2018-05-02</td>
-      <td>('-1.4065513', '34.906551')</td>
-      <td>('-1.4065513', '34.906551')</td>
+      <td>Masai Mara Park, Kenya ('-1.4065513', '34.906551')</td>
+      <td>Masai Mara Park, Kenya ('-1.4065513', '34.906551')</td>
     </tr>
     <tr class="together">
       <td>2018-05-03</td>
-      <td>('-1.4065513', '34.906551')</td>
-      <td>('-1.4065513', '34.906551')</td>
+      <td>Masai Mara Park, Kenya ('-1.4065513', '34.906551')</td>
+      <td>Masai Mara Park, Kenya ('-1.4065513', '34.906551')</td>
     </tr>
     <tr class="together">
       <td>2018-05-04</td>
-      <td>('-1.2920659', '36.8219462')</td>
-      <td>('-1.2920659', '36.8219462')</td>
+      <td>Nairobi, Kenya ('-1.2920659', '36.8219462')</td>
+      <td>Nairobi, Kenya ('-1.2920659', '36.8219462')</td>
     </tr>
     <tr class="together">
       <td>2018-05-05</td>
-      <td>('-1.2920659', '36.8219462')</td>
-      <td>('-1.2920659', '36.8219462')</td>
+      <td>Nairobi, Kenya ('-1.2920659', '36.8219462')</td>
+      <td>Nairobi, Kenya ('-1.2920659', '36.8219462')</td>
     </tr>
     <tr class="together">
       <td>2018-05-06</td>
-      <td>('-1.2920659', '36.8219462')</td>
-      <td>('-1.2920659', '36.8219462')</td>
+      <td>Nairobi, Kenya ('-1.2920659', '36.8219462')</td>
+      <td>Nairobi, Kenya ('-1.2920659', '36.8219462')</td>
     </tr>
     <tr class="together">
       <td>2018-05-07</td>
-      <td>('-1.2920659', '36.8219462')</td>
-      <td>('-1.2920659', '36.8219462')</td>
+      <td>Nairobi, Kenya ('-1.2920659', '36.8219462')</td>
+      <td>Nairobi, Kenya ('-1.2920659', '36.8219462')</td>
     </tr>
     <tr class="together">
       <td>2018-05-08</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-05-09</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-05-10</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-05-11</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-05-12</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-05-13</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-05-14</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-05-15</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-05-16</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-05-17</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-05-18</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('55.6760968', '12.5683372')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Copenhagen ('55.6760968', '12.5683372')</td>
     </tr>
     <tr>
       <td>2018-05-19</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('55.6760968', '12.5683372')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Copenhagen ('55.6760968', '12.5683372')</td>
     </tr>
     <tr>
       <td>2018-05-20</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('55.6760968', '12.5683372')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Copenhagen ('55.6760968', '12.5683372')</td>
     </tr>
     <tr>
       <td>2018-05-21</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-05-22</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-05-23</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-05-24</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-05-25</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-05-26</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('49.7070069', '0.2055978')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Etretat, France ('49.7070069', '0.2055978')</td>
     </tr>
     <tr>
       <td>2018-05-27</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('49.7070069', '0.2055978')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Etretat, France ('49.7070069', '0.2055978')</td>
     </tr>
     <tr>
       <td>2018-05-28</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-05-29</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-05-30</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-05-31</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-06-01</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-06-02</td>
-      <td>('49.258329', '4.031696')</td>
-      <td>('49.258329', '4.031696')</td>
+      <td>Reims, France ('49.258329', '4.031696')</td>
+      <td>Reims, France ('49.258329', '4.031696')</td>
     </tr>
     <tr class="together">
       <td>2018-06-03</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-06-04</td>
-      <td>('55.6760968', '12.5683372')</td>
-      <td>('55.6760968', '12.5683372')</td>
+      <td>Amsterdam ('55.6760968', '12.5683372')</td>
+      <td>Amsterdam ('55.6760968', '12.5683372')</td>
     </tr>
     <tr class="together">
       <td>2018-06-05</td>
-      <td>('55.6760968', '12.5683372')</td>
-      <td>('55.6760968', '12.5683372')</td>
+      <td>Amsterdam ('55.6760968', '12.5683372')</td>
+      <td>Amsterdam ('55.6760968', '12.5683372')</td>
     </tr>
     <tr class="together">
       <td>2018-06-06</td>
-      <td>('55.6760968', '12.5683372')</td>
-      <td>('55.6760968', '12.5683372')</td>
+      <td>Amsterdam ('55.6760968', '12.5683372')</td>
+      <td>Amsterdam ('55.6760968', '12.5683372')</td>
     </tr>
     <tr class="together">
       <td>2018-06-07</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-06-08</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-09</td>
-      <td>('44.895295', '-0.7181')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Saint-Medard-en-Jalles ('44.895295', '-0.7181')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-10</td>
-      <td>('44.743536', '-1.102449')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Andernos ('44.743536', '-1.102449')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-06-11</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-06-12</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-13</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-14</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-06-15</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-16</td>
-      <td>('48.92903', '1.93633')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Morainvilliers ('48.92903', '1.93633')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-17</td>
-      <td>('48.92903', '1.93633')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Morainvilliers ('48.92903', '1.93633')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-06-18</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-19</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-20</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-21</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-22</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-23</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-06-24</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-06-25</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-06-26</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-06-27</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-06-28</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-06-29</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-06-30</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-01</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-02</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-03</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-04</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-05</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-06</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-07</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-08</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr class="together">
       <td>2018-07-09</td>
-      <td>('1.352083', '103.819836')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr class="together">
       <td>2018-07-10</td>
-      <td>('1.352083', '103.819836')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr class="together">
       <td>2018-07-11</td>
-      <td>('1.352083', '103.819836')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr class="together">
       <td>2018-07-12</td>
-      <td>('1.352083', '103.819836')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr class="together">
       <td>2018-07-13</td>
-      <td>('1.352083', '103.819836')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr class="together">
       <td>2018-07-14</td>
-      <td>('1.352083', '103.819836')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr class="together">
       <td>2018-07-15</td>
-      <td>('1.352083', '103.819836')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-16</td>
-      <td>('-8.6478175', '115.1385192')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Canggu, Bali, Indonesia ('-8.6478175', '115.1385192')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-17</td>
-      <td>('-8.6478175', '115.1385192')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Canggu, Bali, Indonesia ('-8.6478175', '115.1385192')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-18</td>
-      <td>('-8.6478175', '115.1385192')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Canggu, Bali, Indonesia ('-8.6478175', '115.1385192')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-19</td>
-      <td>('-8.6478175', '115.1385192')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Canggu, Bali, Indonesia ('-8.6478175', '115.1385192')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-20</td>
-      <td>('-8.6478175', '115.1385192')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Canggu, Bali, Indonesia ('-8.6478175', '115.1385192')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-21</td>
-      <td>('-8.6478175', '115.1385192')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Canggu, Bali, Indonesia ('-8.6478175', '115.1385192')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr>
       <td>2018-07-22</td>
-      <td>('-8.6478175', '115.1385192')</td>
-      <td>('1.352083', '103.819836')</td>
+      <td>Canggu, Bali, Indonesia ('-8.6478175', '115.1385192')</td>
+      <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
     <tr class="together">
       <td>2018-07-23</td>
-      <td>('-8.7223957', '115.1767095')</td>
-      <td>('-8.7223957', '115.1767095')</td>
+      <td>Kuta, Bali, Indonesia ('-8.7223957', '115.1767095')</td>
+      <td>Kuta, Bali, Indonesia ('-8.7223957', '115.1767095')</td>
     </tr>
     <tr class="together">
       <td>2018-07-24</td>
-      <td>('-8.7223957', '115.1767095')</td>
-      <td>('-8.7223957', '115.1767095')</td>
+      <td>Kuta, Bali, Indonesia ('-8.7223957', '115.1767095')</td>
+      <td>Kuta, Bali, Indonesia ('-8.7223957', '115.1767095')</td>
     </tr>
     <tr class="together">
       <td>2018-07-25</td>
-      <td>('-8.7223957', '115.1767095')</td>
-      <td>('-8.7223957', '115.1767095')</td>
+      <td>Kuta, Bali, Indonesia ('-8.7223957', '115.1767095')</td>
+      <td>Kuta, Bali, Indonesia ('-8.7223957', '115.1767095')</td>
     </tr>
     <tr class="together">
       <td>2018-07-26</td>
-      <td>('-8.7223957', '115.1767095')</td>
-      <td>('-8.7223957', '115.1767095')</td>
+      <td>Kuta, Bali, Indonesia ('-8.7223957', '115.1767095')</td>
+      <td>Kuta, Bali, Indonesia ('-8.7223957', '115.1767095')</td>
     </tr>
     <tr class="together">
       <td>2018-07-27</td>
-      <td>('-8.7223957', '115.1767095')</td>
-      <td>('-8.7223957', '115.1767095')</td>
+      <td>Kuta, Bali, Indonesia ('-8.7223957', '115.1767095')</td>
+      <td>Kuta, Bali, Indonesia ('-8.7223957', '115.1767095')</td>
     </tr>
     <tr class="together">
       <td>2018-07-28</td>
-      <td>('-8.5068536', '115.2624778')</td>
-      <td>('-8.5068536', '115.2624778')</td>
+      <td>Ubud, Bali, Indonesia ('-8.5068536', '115.2624778')</td>
+      <td>Ubud, Bali, Indonesia ('-8.5068536', '115.2624778')</td>
     </tr>
     <tr class="together">
       <td>2018-07-29</td>
-      <td>('-8.5068536', '115.2624778')</td>
-      <td>('-8.5068536', '115.2624778')</td>
+      <td>Ubud, Bali, Indonesia ('-8.5068536', '115.2624778')</td>
+      <td>Ubud, Bali, Indonesia ('-8.5068536', '115.2624778')</td>
     </tr>
     <tr class="together">
       <td>2018-07-30</td>
-      <td>('-8.5068536', '115.2624778')</td>
-      <td>('-8.5068536', '115.2624778')</td>
+      <td>Ubud, Bali, Indonesia ('-8.5068536', '115.2624778')</td>
+      <td>Ubud, Bali, Indonesia ('-8.5068536', '115.2624778')</td>
     </tr>
     <tr class="together">
       <td>2018-07-31</td>
-      <td>('-8.5068536', '115.2624778')</td>
-      <td>('-8.5068536', '115.2624778')</td>
+      <td>Ubud, Bali, Indonesia ('-8.5068536', '115.2624778')</td>
+      <td>Ubud, Bali, Indonesia ('-8.5068536', '115.2624778')</td>
     </tr>
     <tr class="together">
       <td>2018-08-01</td>
-      <td>('-8.721642', '115.238576')</td>
-      <td>('-8.721642', '115.238576')</td>
+      <td>Gili Air, Bali, Indonesia ('-8.721642', '115.238576')</td>
+      <td>Gili Air, Bali, Indonesia ('-8.721642', '115.238576')</td>
     </tr>
     <tr class="together">
       <td>2018-08-02</td>
-      <td>('-8.721642', '115.238576')</td>
-      <td>('-8.721642', '115.238576')</td>
+      <td>Gili Air, Bali, Indonesia ('-8.721642', '115.238576')</td>
+      <td>Gili Air, Bali, Indonesia ('-8.721642', '115.238576')</td>
     </tr>
     <tr class="together">
       <td>2018-08-03</td>
-      <td>('-8.6704582', '115.2126293')</td>
-      <td>('-8.6704582', '115.2126293')</td>
+      <td>Denpasar, Bali, Indonesia ('-8.6704582', '115.2126293')</td>
+      <td>Denpasar, Bali, Indonesia ('-8.6704582', '115.2126293')</td>
     </tr>
     <tr class="together">
       <td>2018-08-04</td>
-      <td>('13.7563309', '100.5017651')</td>
-      <td>('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
     </tr>
     <tr class="together">
       <td>2018-08-05</td>
-      <td>('13.7563309', '100.5017651')</td>
-      <td>('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
     </tr>
     <tr class="together">
       <td>2018-08-06</td>
-      <td>('13.7563309', '100.5017651')</td>
-      <td>('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
     </tr>
     <tr class="together">
       <td>2018-08-07</td>
-      <td>('13.7563309', '100.5017651')</td>
-      <td>('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
     </tr>
     <tr class="together">
       <td>2018-08-08</td>
-      <td>('18.7060641', '98.9817163')</td>
-      <td>('18.7060641', '98.9817163')</td>
+      <td>Chiang Mai, Thailand ('18.7060641', '98.9817163')</td>
+      <td>Chiang Mai, Thailand ('18.7060641', '98.9817163')</td>
     </tr>
     <tr class="together">
       <td>2018-08-09</td>
-      <td>('18.7060641', '98.9817163')</td>
-      <td>('18.7060641', '98.9817163')</td>
+      <td>Chiang Mai, Thailand ('18.7060641', '98.9817163')</td>
+      <td>Chiang Mai, Thailand ('18.7060641', '98.9817163')</td>
     </tr>
     <tr class="together">
       <td>2018-08-10</td>
-      <td>('18.7060641', '98.9817163')</td>
-      <td>('18.7060641', '98.9817163')</td>
+      <td>Chiang Mai, Thailand ('18.7060641', '98.9817163')</td>
+      <td>Chiang Mai, Thailand ('18.7060641', '98.9817163')</td>
     </tr>
     <tr class="together">
       <td>2018-08-11</td>
-      <td>('18.7060641', '98.9817163')</td>
-      <td>('18.7060641', '98.9817163')</td>
+      <td>Chiang Mai, Thailand ('18.7060641', '98.9817163')</td>
+      <td>Chiang Mai, Thailand ('18.7060641', '98.9817163')</td>
     </tr>
     <tr class="together">
       <td>2018-08-12</td>
-      <td>('18.7060641', '98.9817163')</td>
-      <td>('18.7060641', '98.9817163')</td>
+      <td>Chiang Mai, Thailand ('18.7060641', '98.9817163')</td>
+      <td>Chiang Mai, Thailand ('18.7060641', '98.9817163')</td>
     </tr>
     <tr class="together">
       <td>2018-08-13</td>
-      <td>('13.7563309', '100.5017651')</td>
-      <td>('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
     </tr>
     <tr class="together">
       <td>2018-08-14</td>
-      <td>('8.0414921', '98.8366162')</td>
-      <td>('8.0414921', '98.8366162')</td>
+      <td>Ao Nang, Thailand ('8.0414921', '98.8366162')</td>
+      <td>Ao Nang, Thailand ('8.0414921', '98.8366162')</td>
     </tr>
     <tr class="together">
       <td>2018-08-15</td>
-      <td>('8.0414921', '98.8366162')</td>
-      <td>('8.0414921', '98.8366162')</td>
+      <td>Ao Nang, Thailand ('8.0414921', '98.8366162')</td>
+      <td>Ao Nang, Thailand ('8.0414921', '98.8366162')</td>
     </tr>
     <tr class="together">
       <td>2018-08-16</td>
-      <td>('8.0414921', '98.8366162')</td>
-      <td>('8.0414921', '98.8366162')</td>
+      <td>Ao Nang, Thailand ('8.0414921', '98.8366162')</td>
+      <td>Ao Nang, Thailand ('8.0414921', '98.8366162')</td>
     </tr>
     <tr class="together">
       <td>2018-08-17</td>
-      <td>('7.6243677', '99.0792263')</td>
-      <td>('7.6243677', '99.0792263')</td>
+      <td>Koh Lanta, Thailand ('7.6243677', '99.0792263')</td>
+      <td>Koh Lanta, Thailand ('7.6243677', '99.0792263')</td>
     </tr>
     <tr class="together">
       <td>2018-08-18</td>
-      <td>('7.6243677', '99.0792263')</td>
-      <td>('7.6243677', '99.0792263')</td>
+      <td>Koh Lanta, Thailand ('7.6243677', '99.0792263')</td>
+      <td>Koh Lanta, Thailand ('7.6243677', '99.0792263')</td>
     </tr>
     <tr class="together">
       <td>2018-08-19</td>
-      <td>('7.6243677', '99.0792263')</td>
-      <td>('7.6243677', '99.0792263')</td>
+      <td>Koh Lanta, Thailand ('7.6243677', '99.0792263')</td>
+      <td>Koh Lanta, Thailand ('7.6243677', '99.0792263')</td>
     </tr>
     <tr class="together">
       <td>2018-08-20</td>
-      <td>('7.6243677', '99.0792263')</td>
-      <td>('7.6243677', '99.0792263')</td>
+      <td>Koh Lanta, Thailand ('7.6243677', '99.0792263')</td>
+      <td>Koh Lanta, Thailand ('7.6243677', '99.0792263')</td>
     </tr>
     <tr class="together">
       <td>2018-08-21</td>
-      <td>('13.7563309', '100.5017651')</td>
-      <td>('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
+      <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
     </tr>
     <tr>
       <td>2018-08-22</td>
-      <td>('25.0329694', '121.5654177')</td>
-      <td>('51.5073509', '-0.1277583')</td>
+      <td>Taipei ('25.0329694', '121.5654177')</td>
+      <td>London ('51.5073509', '-0.1277583')</td>
     </tr>
     <tr>
       <td>2018-08-23</td>
-      <td>('25.0329694', '121.5654177')</td>
-      <td>('51.5073509', '-0.1277583')</td>
+      <td>Taipei ('25.0329694', '121.5654177')</td>
+      <td>London ('51.5073509', '-0.1277583')</td>
     </tr>
     <tr>
       <td>2018-08-24</td>
-      <td>('25.0329694', '121.5654177')</td>
-      <td>('51.5073509', '-0.1277583')</td>
+      <td>Taipei ('25.0329694', '121.5654177')</td>
+      <td>London ('51.5073509', '-0.1277583')</td>
     </tr>
     <tr>
       <td>2018-08-25</td>
-      <td>('25.0329694', '121.5654177')</td>
-      <td>('51.5073509', '-0.1277583')</td>
+      <td>Taipei ('25.0329694', '121.5654177')</td>
+      <td>London ('51.5073509', '-0.1277583')</td>
     </tr>
     <tr>
       <td>2018-08-26</td>
-      <td>('22.396428', '114.109497')</td>
-      <td>('51.5073509', '-0.1277583')</td>
+      <td>Hong Kong ('22.396428', '114.109497')</td>
+      <td>London ('51.5073509', '-0.1277583')</td>
     </tr>
     <tr>
       <td>2018-08-27</td>
-      <td>('22.396428', '114.109497')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hong Kong ('22.396428', '114.109497')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-08-28</td>
-      <td>('22.396428', '114.109497')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hong Kong ('22.396428', '114.109497')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-08-29</td>
-      <td>('22.396428', '114.109497')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hong Kong ('22.396428', '114.109497')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-08-30</td>
-      <td>('22.396428', '114.109497')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hong Kong ('22.396428', '114.109497')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-08-31</td>
-      <td>('22.396428', '114.109497')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hong Kong ('22.396428', '114.109497')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-09-01</td>
-      <td>('22.396428', '114.109497')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Hong Kong ('22.396428', '114.109497')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-09-02</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-09-03</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-09-04</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-09-05</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-09-06</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-09-07</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-09-08</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-09-09</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-09-10</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-09-11</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-09-12</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-09-13</td>
-      <td>('44.895295', '-0.7181')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Saint-Medard-en-Jalles ('44.895295', '-0.7181')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-09-14</td>
-      <td>('44.895295', '-0.7181')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Saint-Medard-en-Jalles ('44.895295', '-0.7181')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-09-15</td>
-      <td>('44.895295', '-0.7181')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Saint-Medard-en-Jalles ('44.895295', '-0.7181')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr>
       <td>2018-09-16</td>
-      <td>('44.895295', '-0.7181')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Saint-Medard-en-Jalles ('44.895295', '-0.7181')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-09-17</td>
-      <td>('48.404676', '2.70162')</td>
-      <td>('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
+      <td>Fontainebleau, France ('48.404676', '2.70162')</td>
     </tr>
     <tr class="together">
       <td>2018-09-18</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr class="together">
       <td>2018-09-19</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
     </tr>
     <tr>
       <td>2018-09-20</td>
-      <td>('29.0468535', '-13.5899733')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Lanzarote, Spain ('29.0468535', '-13.5899733')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-09-21</td>
-      <td>('29.0468535', '-13.5899733')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Lanzarote, Spain ('29.0468535', '-13.5899733')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-09-22</td>
-      <td>('29.0468535', '-13.5899733')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Lanzarote, Spain ('29.0468535', '-13.5899733')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-09-23</td>
-      <td>('29.0468535', '-13.5899733')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Lanzarote, Spain ('29.0468535', '-13.5899733')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-09-24</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-09-25</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-09-26</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-09-27</td>
-      <td>('48.856614', '2.3522219')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Paris, France ('48.856614', '2.3522219')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-09-28</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-09-29</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-09-30</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-10-01</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-10-02</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-10-03</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('44.977753', '-93.2650108')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Minneapolis, USA ('44.977753', '-93.2650108')</td>
     </tr>
     <tr>
       <td>2018-10-04</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('44.977753', '-93.2650108')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Minneapolis, USA ('44.977753', '-93.2650108')</td>
     </tr>
     <tr>
       <td>2018-10-05</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('44.977753', '-93.2650108')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Minneapolis, USA ('44.977753', '-93.2650108')</td>
     </tr>
     <tr>
       <td>2018-10-06</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('44.977753', '-93.2650108')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Minneapolis, USA ('44.977753', '-93.2650108')</td>
     </tr>
     <tr>
       <td>2018-10-07</td>
-      <td>('41.8781136', '-87.6297982')</td>
-      <td>('44.977753', '-93.2650108')</td>
+      <td>Chicago, Illinois, USA ('41.8781136', '-87.6297982')</td>
+      <td>Minneapolis, USA ('44.977753', '-93.2650108')</td>
     </tr>
     <tr class="together">
       <td>2018-10-08</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-10-09</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-10-10</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-10-11</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-10-12</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-10-13</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-10-14</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-10-15</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-10-16</td>
-      <td>('37.3382082', '-121.8863286')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Jose, CA, USA ('37.3382082', '-121.8863286')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-10-17</td>
-      <td>('37.3382082', '-121.8863286')</td>
-      <td>('37.3382082', '-121.8863286')</td>
+      <td>San Jose, CA, USA ('37.3382082', '-121.8863286')</td>
+      <td>San Jose, CA, USA ('37.3382082', '-121.8863286')</td>
     </tr>
     <tr class="together">
       <td>2018-10-18</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
     </tr>
     <tr class="together">
       <td>2018-10-19</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
     </tr>
     <tr class="together">
       <td>2018-10-20</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
     </tr>
     <tr class="together">
       <td>2018-10-21</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
     </tr>
     <tr class="together">
       <td>2018-10-22</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-10-23</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-10-24</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-10-25</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
     </tr>
     <tr class="together">
       <td>2018-10-26</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
     </tr>
     <tr class="together">
       <td>2018-10-27</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
     </tr>
     <tr class="together">
       <td>2018-10-28</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
     </tr>
     <tr>
       <td>2018-10-29</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-10-30</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-10-31</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-11-01</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-11-02</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-11-03</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-11-04</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-11-05</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-11-06</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-11-07</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-11-08</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.359443', '-71.058145')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Boston, MA, USA ('42.359443', '-71.058145')</td>
     </tr>
     <tr>
       <td>2018-11-09</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.359443', '-71.058145')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Boston, MA, USA ('42.359443', '-71.058145')</td>
     </tr>
     <tr class="together">
       <td>2018-11-10</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-11-11</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-11-12</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-11-13</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr>
       <td>2018-11-14</td>
-      <td>('37.7749295', '-122.4194155')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>San Francisco ('37.7749295', '-122.4194155')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-11-15</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-11-16</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
     <tr class="together">
       <td>2018-11-17</td>
-      <td>('42.0450722', '-87.6876969')</td>
-      <td>('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
+      <td>Evanston, Illinois, USA ('42.0450722', '-87.6876969')</td>
     </tr>
   </table>
-
   <script src="assets/main.js"></script>
 
   <!-- TODO: replace with true GA id. -->

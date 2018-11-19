@@ -16,22 +16,22 @@ GEOCODES = 'Geocodes!A2:C'
 
 
 def generate_table(location_data):
-    table = '<table>\n'
-    table += '  <tr>\n'
-    table += '    <th>Date</th><th>Arnaud</th><th>Ryan</th>\n'
-    table += '  </tr>\n'
+    table = '  <table>\n'
+    table += '    <tr>\n'
+    table += '      <th>Date</th><th>Arnaud</th><th>Ryan</th>\n'
+    table += '    </tr>\n'
 
-    for date, arnaud_location, ryan_location in location_data:
+    for date, arnaud_location_name, arnaud_location, ryan_location_name, ryan_location in location_data:
         if arnaud_location == ryan_location:
-            table += '  <tr class="together">\n'
+            table += '    <tr class="together">\n'
         else:
-            table += '  <tr>\n'
-        table += '    <td>{}</td>\n'.format(date)
-        table += '    <td>{}</td>\n'.format(arnaud_location)
-        table += '    <td>{}</td>\n'.format(ryan_location)
-        table += '  </tr>\n'
+            table += '    <tr>\n'
+        table += '      <td>{}</td>\n'.format(date)
+        table += '      <td>{} {}</td>\n'.format(arnaud_location_name, arnaud_location)
+        table += '      <td>{} {}</td>\n'.format(ryan_location_name, ryan_location)
+        table += '    </tr>\n'
 
-    table += '</table>\n'
+    table += '  </table>\n'
     return table
 
 def main():
@@ -70,7 +70,13 @@ def main():
         print('No location data found.')
     else:
         location_data = [
-            (row[0], geocodes[row[1]], geocodes[row[2]])
+            (
+                row[0],
+                row[1],
+                geocodes[row[1]],
+                row[2],
+                geocodes[row[2]],
+            )
             for row in locations if len(row) == 3
         ]
 
