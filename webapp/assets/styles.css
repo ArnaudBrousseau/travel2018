@@ -1,5 +1,9 @@
 @namespace svg "http://www.w3.org/2000/svg";
 
+body {
+  font-family: 'Caveat', sans-serif;
+}
+
 .map {
   background: url('world_bg.png') top center no-repeat;
   opacity: 1;
@@ -71,7 +75,7 @@ input[type=range] {
 
 #day-indicator {
   display: block;
-  /* width: 100%; */
   text-align: center;
   margin: auto;
+  /* font-weight: bold; */
 }
