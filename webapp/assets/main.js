@@ -26,7 +26,7 @@ MAP_HEIGHT = 579;
  * Goes from "('42.0450722', '-87.6876969')" to {x:..., y:...}
  */
 var toXY = function(latlngstr) {
-  var latlng = latlngstr.match(/([0-9\.-]+)/g);
+  var latlng = latlngstr.match(/([0-9\.-]{2,})/g);
   if (latlng.length !== 2) {
     console.error('latlng.length should be 2! latlng: ' + latlng);
   }
@@ -40,8 +40,8 @@ var toXY = function(latlngstr) {
   var FUDGE_FACTOR = 15;
 
   return {
-    x: ((MAP_WIDTH/360.0) * (180 + lng)),
-    y: ((MAP_HEIGHT/180.0) * (90 - lat) - FUDGE_FACTOR)
+    x: parseInt((MAP_WIDTH/360.0) * (180 + lng)),
+    y: parseInt((MAP_HEIGHT/180.0) * (90 - lat) - FUDGE_FACTOR)
   }
 };
 
@@ -55,6 +55,7 @@ console.log("paris", toXY("('48.856614', '2.3522219')"));
 /**
  * Creates a path, e.g.
  * <path id="pathId" d="M237,180 Q515,50 757,150" fill="none" stroke="#aaa" stroke-width="1"></path>
+ * TODO: use this method to drace paths!
  */
 var createPath = function(pathId, startx, starty, endx, endy, isArcDown) {
   var xmlns = "http://www.w3.org/2000/svg";
@@ -80,9 +81,6 @@ var createPath = function(pathId, startx, starty, endx, endy, isArcDown) {
   });
 };
 
-createPath('sf-to-paris', 237, 180, 757, 150, false);
-createPath('paris-to-sf', 237, 180, 757, 150, true);
-
 /**
  * Creates a place, e.g.
  * <circle id="placeId" cx="237" cy="180" r="4" stroke="#db9510" fill="#e9bb63" />
@@ -104,18 +102,55 @@ var createPlace = function(placeId, x, y) {
   });
 };
 
+/**
+ * Moves a previously created place
+ */
+var movePlace = function(placeId, x, y) {
+  var place = document.getElementById(placeId);
+  place.setAttributeNS(null, "cx", x);
+  place.setAttributeNS(null, "cy", y);
+};
 
-var paris = toXY("('48.856614', '2.3522219')");
-var evanston = toXY("('42.0450722', '-87.6876969')");
-var sf = toXY("('37.7749295', '-122.4194155')");
-createPlace("evanston", evanston.x, evanston.y);
-createPlace("paris", paris.x, paris.y);
-createPlace("sf", sf.x, sf.y);
+/**
+ * Hides/Show a previously created place
+ */
+var hidePlace = function(placeId, x, y) {
+  var place = document.getElementById(placeId);
+  if (place) {
+    place.classList.add('hidden');
+  }
+};
+var showPlace = function(placeId, x, y) {
+  var place = document.getElementById(placeId);
+  if (place) {
+    place.classList.remove('hidden');
+  }
+};
+
+var moveFace = function(faceId, x, y) {
+  var face = document.getElementById(faceId);
+  face.setAttributeNS(null, "transform", "translate(" + x + " " + y + ")");
+};
+
+var showFace = function(faceId) {
+  var face = document.getElementById(faceId);
+  if (face) {
+    face.classList.remove('hidden');
+  }
+};
+
+var hideFace = function(faceId) {
+  var face = document.getElementById(faceId);
+  if (face) {
+    face.classList.add('hidden');
+  }
+};
 
 /**
  * Adds animations to our #animations element. Each animation looks like:
  *    <animateMotion xlink:href="#elementId" dur="0.7s" begin="0s" fill="freeze">
  *    <mpath xlink:href="#pathId" />
+ * TODO: use it to animate stuff :)
  */
 var animate = function(elementId, pathId) {
   var xmlns = "http://www.w3.org/2000/svg";
@@ -136,9 +171,45 @@ var animate = function(elementId, pathId) {
     animateMotion.beginElement();
   });
 };
-setTimeout(function() {
-  animate('arnaud-sad-circle', 'sf-to-paris');
-}, 2000);
+
+var placePerson = function(locStr, who) {
+    var loc = toXY(locStr);
+
+    switch (who) {
+      case 'arnaud':
+        if (document.getElementById('arnaud-dot')) {
+          movePlace('arnaud-dot', loc.x, loc.y);
+        } else {
+          createPlace('arnaud-dot', loc.x, loc.y);
+        }
+        moveFace('arnaud-sad-face', loc.x, loc.y);
+
+        break;
+      case 'ryan':
+        if (document.getElementById('ryan-dot')) {
+          movePlace('ryan-dot', loc.x, loc.y);
+        } else {
+          createPlace('ryan-dot', loc.x, loc.y);
+        }
+        moveFace('ryan-sad-face', loc.x, loc.y);
+        break;
+      case 'together':
+        if (document.getElementById('together-dot')) {
+          movePlace('together-dot', loc.x, loc.y);
+        } else {
+          createPlace('together-dot', loc.x, loc.y);
+        }
+        moveFace('together-face', loc.x, loc.y);
+        break;
+      default:
+        console.error('Should not reach this case. Who: ' + who);
+    }
+}
+
+
+/******************************************************************************
+ * Control setup
+ *****************************************************************************/
 
 var setUpSlider = function() {
   document.getElementById('day-slider').addEventListener('change', onSliderChange);
@@ -152,12 +223,43 @@ var showMap = function() {
 }
 
 var onSliderChange = function(e) {
-  /**
-   * TODO: get the corresponding positions for both of us
-   * then highlight the active paths,
-   * then animate to the new position and update the avatars
-   */
-  console.log(e.target.value);
+  var date = e.target.value;
+  var isoDate = dayOfYearToDate(date);
+  document.getElementById('day-indicator').innerHTML = isoDate;
+
+  // Now let's get the corresponding positions for both of us
+  var locationData = document.getElementById('location-data');
+  var locationRow = locationData.getElementsByClassName(isoDate);
+  if (locationRow.length === 1) {
+    var locationCells = locationRow[0].getElementsByTagName('td');
+    if (locationCells.length === 3) {
+      var arnaudLocation = locationCells[1].innerHTML;
+      var ryanLocation = locationCells[2].innerHTML;
+
+      if (arnaudLocation !== ryanLocation) {
+        placePerson(arnaudLocation, 'arnaud');
+        placePerson(ryanLocation, 'ryan');
+        hideFace('together-face');
+        hidePlace('together-dot');
+        showFace('arnaud-sad-face');
+        showFace('ryan-sad-face');
+        showPlace('arnaud-dot');
+        showPlace('ryan-dot');
+      } else {
+        placePerson(arnaudLocation, 'together');
+        showFace('together-face');
+        showPlace('together-dot');
+        hideFace('arnaud-sad-face');
+        hideFace('ryan-sad-face');
+        hidePlace('arnaud-dot');
+        hidePlace('ryan-dot');
+      }
+    } else {
+      console.error('Expected 3 <td>s in: ' + locationCells);
+    }
+  } else {
+    console.error('No location info for ' + isoDate);
+  }
 };
 
 /**
