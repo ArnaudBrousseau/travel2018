@@ -23,9 +23,9 @@ def generate_table(location_data):
 
     for date, arnaud_location_name, arnaud_location, ryan_location_name, ryan_location in location_data:
         if arnaud_location == ryan_location:
-            table += '    <tr class="together">\n'
+            table += '    <tr class="together {}">\n'.format(date)
         else:
-            table += '    <tr>\n'
+            table += '    <tr class="{}">\n'.format(date)
         table += '      <td>{}</td>\n'.format(date)
         table += '      <td>{} {}</td>\n'.format(arnaud_location_name, arnaud_location)
         table += '      <td>{} {}</td>\n'.format(ryan_location_name, ryan_location)
@@ -81,8 +81,6 @@ def main():
         ]
 
     table = generate_table(location_data)
-    print(table)
-
     with open(DIR_PATH + '/locations.html', 'w') as f:
         f.write(table)
 

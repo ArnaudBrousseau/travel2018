@@ -13,6 +13,8 @@ map/venv: map/requirements.txt
 .PHONY: data
 data: data/venv
 	data/venv/bin/python data/sheet_import.py
+	cat data/locations.html | pbcopy
+	@echo "Location table copied to clipboard."
 
 data/venv: data/requirements.txt
 	virtualenv --python=python3 data/venv

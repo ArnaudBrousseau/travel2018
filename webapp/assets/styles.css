@@ -3,6 +3,9 @@
 .map {
   background: url('world_bg.png') top center no-repeat;
   opacity: 1;
+  margin: auto;
+  /* width: 1200px; */
+  display: block;
 }
 
 .hide-me-from-older-browsers {
