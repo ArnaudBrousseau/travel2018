@@ -142,6 +142,7 @@ setTimeout(function() {
 
 var setUpSlider = function() {
   document.getElementById('day-slider').addEventListener('change', onSliderChange);
+  document.getElementById('day-slider').addEventListener('input', onSliderInput);
   // Show controls
   document.getElementsByClassName('controls')[0].classList.remove('hidden');
 };
@@ -157,6 +158,55 @@ var onSliderChange = function(e) {
    * then animate to the new position and update the avatars
    */
   console.log(e.target.value);
+};
+
+/**
+ * Not the prettiest code I've ever written, although from an art perspective
+ * it's kinda neat :)
+ */
+var dayOfYearToDate = function(day) {
+  if (day <= 31) {
+    return '2018-01-'+ padDay(day);
+  } else if (day <= 31+28) {
+    return '2018-02-'+ padDay(day-31);
+  } else if (day <= 31+28+31) {
+    return '2018-03-'+ padDay(day-31-28);
+  } else if (day <= 31+28+31+30) {
+    return '2018-04-'+ padDay(day-31-28-31);
+  } else if (day <= 31+28+31+30+31) {
+    return '2018-05-'+ padDay(day-31-28-31-30);
+  } else if (day <= 31+28+31+30+31+30) {
+    return '2018-06-'+ padDay(day-31-28-31-30-31);
+  } else if (day <= 31+28+31+30+31+30+31) {
+    return '2018-07-'+ padDay(day-31-28-31-30-31-30);
+  } else if (day <= 31+28+31+30+31+30+31+31) {
+    return '2018-08-'+ padDay(day-31-28-31-30-31-30-31);
+  } else if (day <= 31+28+31+30+31+30+31+31+30) {
+    return '2018-09-'+ padDay(day-31-28-31-30-31-30-31-31);
+  } else if (day <= 31+28+31+30+31+30+31+31+30+31) {
+    return '2018-10-'+ padDay(day-31-28-31-30-31-30-31-31-30);
+  } else if (day <= 31+28+31+30+31+30+31+31+30+31+30) {
+    return '2018-11-'+ padDay(day-31-28-31-30-31-30-31-31-30-31);
+  } else if (day <= 31+28+31+30+31+30+31+31+30+31+30+31) {
+    return '2018-12-'+ padDay(day-31-28-31-30-31-30-31-31-30-31-30);
+  } else {
+    console.error('day cannot be more than 365');
+  }
+};
+
+var padDay = function(day) {
+  if (String(day).length === 1) {
+    return '0' + day
+  } else {
+    return String(day);
+  }
+};
+
+var onSliderInput = function(e) {
+  // "date" is 1 through 365. 2018 isn't a leap year.
+  var date = e.target.value;
+  var isoDate = dayOfYearToDate(date);
+  document.getElementById('day-indicator').innerHTML = isoDate;
 };
 
 /******************************************************************************

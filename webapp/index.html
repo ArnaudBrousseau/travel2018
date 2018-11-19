@@ -54,22 +54,10 @@
   </svg>
 
   <div class="controls hidden fade">
-    <div class="jump-to">
-      <span class="l31">January</span>
-      <span class="l28">February</span>
-      <span class="l31">March</span>
-      <span class="l30">April</span>
-      <span class="l31">May</span>
-      <span class="l30">June</span>
-      <span class="l31">July</span>
-      <span class="l31">August</span>
-      <span class="l30">September</span>
-      <span class="l30">October</span>
-      <span class="l31">November</span>
-      <span class="l30">December</span>
+    <div class="range-input">
+      <input type="range" name="day" min="1" max="365" value="32" step="1" id="day-slider"/>
+      <span id="day-indicator"></span>
     </div>
-
-    <input type="range" name="day" min="1" max="365" value="32" step="1" list="tickmarks" id="day-slider"></input>
   </div>
 
   <table>

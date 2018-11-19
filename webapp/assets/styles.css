@@ -44,111 +44,6 @@ td {
 }
 
 /******************************************************************************
- * Range styles, greatly inspired by:
- * https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
- *****************************************************************************/
-input[type=range] {
-  -webkit-appearance: none;
-  margin: 0;
-  width: 100%;
-}
-input[type=range]:focus {
-  outline: none;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 0px;
-  cursor: pointer;
-  animate: 0.2s;
-}
-input[type=range]::-webkit-slider-thumb {
-  background: #ffffff;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -10px;
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 14px solid #222;
-}
-
-input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 0;
-  cursor: pointer;
-  animate: 0.2s;
-}
-input[type=range]::-moz-range-thumb {
-  background: #ffffff;
-  cursor: pointer;
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 14px solid #222;
-}
-input[type=range]::-ms-track {
-  width: 100%;
-  height: 0;
-  cursor: pointer;
-  animate: 0.2s;
-}
-input[type=range]::-ms-thumb {
-  background: #fff;
-  cursor: pointer;
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 14px solid #222;
-}
-
-/******************************************************************************
- * "Jump-to" buttons
- * See https://css-tricks.com/css-basics-styling-links-like-boss/
- *****************************************************************************/
-.jump-to span {
-  box-shadow: 0 2px 0 #222;
-  color: #222;
-  margin: 4px;
-  padding: 10px 0;
-  position: relative;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 4px 4px 0 0;
-}
-
-.jump-to span:hover {
-  background-color: #222;
-  color: white;
-  box-shadow: 0 2px 0 #fff;
-  cursor: pointer;
-}
-
-.jump-to span:active {
-  box-shadow: none;
-  top: 5px;
-}
-
-.jump-to {
-  display: flex;
-  flex-direction: row;
-}
-.jump-to span.l31 {
-  flex-grow: 31;
-  flex-basis: 31;
-}
-.jump-to span.l30 {
-  flex-grow: 30;
-  flex-basis: 30;
-}
-.jump-to span.l28 {
-  flex-grow: 28;
-  flex-basis: 28;
-}
-
-/******************************************************************************
  * Controls container
  *****************************************************************************/
 .controls {
@@ -159,4 +54,14 @@ input[type=range]::-ms-thumb {
   background: white;
   box-shadow: 0 2px 5px #888;
   opacity: 1;
+}
+
+/******************************************************************************
+ * Range styles
+ *****************************************************************************/
+.range-input {
+  padding: 5px 15px 10px 10px;
+}
+input[type=range] {
+  width: 100%;
 }
