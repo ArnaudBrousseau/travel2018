@@ -1,8 +1,11 @@
+import os
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
 
 assert str is not bytes, 'Use Python3 plz'
+
+DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
@@ -35,10 +38,10 @@ def main():
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    store = file.Storage('token.json')
+    store = file.Storage(DIR_PATH + '/token.json')
     creds = store.get()
     if not creds or creds.invalid:
-        flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
+        flow = client.flow_from_clientsecrets(DIR_PATH + '/credentials.json', SCOPES)
         creds = tools.run_flow(flow, store)
     service = build('sheets', 'v4', http=creds.authorize(Http()))
 
@@ -73,7 +76,8 @@ def main():
 
     table = generate_table(location_data)
     print(table)
-    with open('locations.html', 'w') as f:
+
+    with open(DIR_PATH + '/locations.html', 'w') as f:
         f.write(table)
 
 if __name__ == '__main__':

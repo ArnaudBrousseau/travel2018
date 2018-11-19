@@ -1,8 +1,11 @@
 #!venv/bin/python
 import mapnik
+import os
 
-stylesheet = 'world_style.xml'
-image = 'output.png'
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+stylesheet = dir_path + '/world_style.xml'
+image = dir_path + '/output.png'
 mapnik.register_fonts('/Library/Fonts/');
 
 #for face in mapnik.FontEngine.face_names(): print face

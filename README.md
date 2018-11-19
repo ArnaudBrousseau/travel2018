@@ -1,16 +1,23 @@
-# Webapp
-
 # Map
+
+Built with data from [NaturalEarthData](https://www.naturalearthdata.com) and
+[Mapnik](https://mapnik.org/). To re-build the map:
+
+    `make map`
 
 # Data
 
-Create a python3 virtualenv with:
+This is taken from a Google Spreadsheet. To pull fresh data:
 
-* `virtualenv --python=python3 venv`
-* `curl https://bootstrap.pypa.io/get-pip.py | python`
-* `pip install --upgrade google-api-python-client oauth2client`
+    `make data`
 
-Then follow https://developers.google.com/sheets/api/quickstart/python to get
-started and get API credentials. Once running:
+This will create a new `data/locations.html` file. Then manually copy/paste its
+content in `webapp/index.html`.
 
-`cd data && python3 venv/bin/python sheet_import.py`
+# Webapp
+
+Simple webapp, progressively enhanced:
+
+* Step 0: just display the locations table
+* Step 1: display SVG
+* Step 2: animate it and build the controls
