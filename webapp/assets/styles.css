@@ -57,11 +57,18 @@ td {
 }
 
 /******************************************************************************
- * Range styles
+ * Indicator and range styles
  *****************************************************************************/
 .range-input {
   padding: 5px 15px 10px 10px;
 }
 input[type=range] {
   width: 100%;
+}
+
+#day-indicator {
+  display: block;
+  /* width: 100%; */
+  text-align: center;
+  margin: auto;
 }
