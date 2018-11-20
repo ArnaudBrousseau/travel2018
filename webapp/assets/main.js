@@ -39,14 +39,26 @@ var toXY = function(latlngstr) {
   // polygons used to generate our map background?
   var FUDGE_FACTOR = 15;
 
-  return {
-    x: parseInt((MAP_WIDTH/360.0) * (180 + lng)),
-    y: parseInt((MAP_HEIGHT/180.0) * (90 - lat) - FUDGE_FACTOR)
-  }
+  return new Point(
+    parseInt((MAP_WIDTH/360.0) * (180 + lng)),
+    parseInt((MAP_HEIGHT/180.0) * (90 - lat) - FUDGE_FACTOR)
+  )
 };
 
 console.log("paris", toXY("('48.856614', '2.3522219')"));
 
+/******************************************************************************
+ * Base classes
+ *****************************************************************************/
+
+function Point(x, y) {
+  this.x = x
+  this.y = y
+};
+
+Point.prototype.toString = function() {
+  return 'x: ' + this.x + ', y: ' + this.y;
+};
 
 /******************************************************************************
  * SVG Manipulation
@@ -55,7 +67,6 @@ console.log("paris", toXY("('48.856614', '2.3522219')"));
 /**
  * Creates a path, e.g.
  * <path id="pathId" d="M237,180 Q515,50 757,150" fill="none" stroke="#aaa" stroke-width="1"></path>
- * TODO: use this method to drace paths!
  */
 var createPath = function(pathId, startx, starty, endx, endy, isArcDown) {
   var xmlns = "http://www.w3.org/2000/svg";
@@ -219,8 +230,67 @@ var setUpSlider = function() {
 };
 
 var showMap = function() {
+  plotPlaces();
   document.getElementsByClassName('map')[0].classList.remove('hidden');
 }
+
+var plotPlaces = function() {
+  var previousArnaudLocation = null;
+  var previousRyanLocation = null;
+  // Gosh it really sucks that {x: 1, y: 2} != {x: 1, y:2}
+  // TODO: research custom equality functions?
+  var previousArnaudLocationStr = null;
+  var previousRyanLocationStr = null;
+
+  var plottedPlaces = [];
+  var rows = document.getElementsByTagName('tr');
+
+  for (var i=0; i < rows.length; i++) {
+    var locationCells = rows[i].getElementsByTagName('td');
+    if (locationCells.length === 3) {
+      var arnaudLocationStr = locationCells[1].innerHTML;
+      var ryanLocationStr = locationCells[2].innerHTML;
+      var arnaudLocation = toXY(arnaudLocationStr);
+      var ryanLocation = toXY(ryanLocationStr);
+
+      if (plottedPlaces.indexOf(arnaudLocationStr) === -1) {
+        // i acts as the ID here, but we don't really care
+        createPlace(i, arnaudLocation.x, arnaudLocation.y);
+        plottedPlaces.push(arnaudLocationStr);
+      }
+      if (plottedPlaces.indexOf(ryanLocationStr) === -1) {
+        // -i acts as the ID here, but we don't really care
+        createPlace(-i, ryanLocation.x, ryanLocation.y)
+        plottedPlaces.push(ryanLocationStr);
+      }
+
+      // Now let's plot paths.
+      if (previousArnaudLocationStr !== null && previousRyanLocationStr !== null) {
+        // case where we had previous locations
+        if (previousArnaudLocationStr == arnaudLocationStr && previousRyanLocationStr == ryanLocationStr && arnaudLocationStr == ryanLocationStr) {
+          // We have only one path to draw
+          // It arcs down if the path goes from right to left (arbitrary)
+          var isArcDown = !!(ryanLocation.x-previousRyanLocation.x < 0);
+          createPath(i, previousRyanLocation.x, previousRyanLocation.y, ryanLocation.x, ryanLocation.y, isArcDown);
+        } else {
+          if (ryanLocationStr != previousRyanLocationStr) {
+            var isArcDown = !!(ryanLocation.x-previousRyanLocation.x < 0);
+            createPath(i, previousRyanLocation.x, previousRyanLocation.y, ryanLocation.x, ryanLocation.y, isArcDown);
+          }
+          if (arnaudLocationStr != previousArnaudLocationStr) {
+            var isArcDown = !!(arnaudLocation.x-previousArnaudLocation.x < 0);
+            createPath(i, previousArnaudLocation.x, previousArnaudLocation.y, arnaudLocation.x, arnaudLocation.y, isArcDown);
+          }
+        }
+      }
+      previousArnaudLocation = arnaudLocation;
+      previousRyanLocation = ryanLocation;
+      // GRRRrrr. Makes me angry to have to do this. Really JavaScript?
+      previousArnaudLocationStr = arnaudLocationStr;
+      previousRyanLocationStr = ryanLocationStr;
+    }
+  }
+};
 
 var onSliderChange = function(e) {
   var date = e.target.value;
