@@ -98,7 +98,7 @@ var createPath = function(pathId, startx, starty, endx, endy, isArcDown) {
  * Creates a place, e.g.
  * <circle id="placeId" cx="237" cy="180" r="4" stroke="#db9510" fill="#e9bb63" />
  */
-var createPlace = function(placeId, x, y) {
+var createPlace = function(placeId, x, y, colored) {
   var xmlns = "http://www.w3.org/2000/svg";
   var places = document.getElementById('places');
 
@@ -106,9 +106,16 @@ var createPlace = function(placeId, x, y) {
   place.setAttributeNS(null, "id", placeId);
   place.setAttributeNS(null, "cx", x);
   place.setAttributeNS(null, "cy", y);
-  place.setAttributeNS(null, "r", "4");
-  place.setAttributeNS(null, "stroke", "#db9510");
-  place.setAttributeNS(null, "fill", "#e9bb63");
+
+  if (colored === true) {
+    place.setAttributeNS(null, "r", "4");
+    place.setAttributeNS(null, "stroke", "#db9510");
+    place.setAttributeNS(null, "fill", "#e9bb63");
+  } else {
+    place.setAttributeNS(null, "stroke", "#ccc");
+    place.setAttributeNS(null, "fill", "#fff");
+    place.setAttributeNS(null, "r", "4");
+  }
 
   window.requestAnimationFrame(function() {
     places.appendChild(place);
@@ -193,7 +200,7 @@ var placePerson = function(locStr, who) {
         if (document.getElementById('arnaud-dot')) {
           movePlace('arnaud-dot', loc.x, loc.y);
         } else {
-          createPlace('arnaud-dot', loc.x, loc.y);
+          createPlace('arnaud-dot', loc.x, loc.y, true);
         }
         moveFace('arnaud-sad-face', loc.x, loc.y);
 
@@ -202,7 +209,7 @@ var placePerson = function(locStr, who) {
         if (document.getElementById('ryan-dot')) {
           movePlace('ryan-dot', loc.x, loc.y);
         } else {
-          createPlace('ryan-dot', loc.x, loc.y);
+          createPlace('ryan-dot', loc.x, loc.y, true);
         }
         moveFace('ryan-sad-face', loc.x, loc.y);
         break;
@@ -210,7 +217,7 @@ var placePerson = function(locStr, who) {
         if (document.getElementById('together-dot')) {
           movePlace('together-dot', loc.x, loc.y);
         } else {
-          createPlace('together-dot', loc.x, loc.y);
+          createPlace('together-dot', loc.x, loc.y, true);
         }
         moveFace('together-face', loc.x, loc.y);
         break;
@@ -257,12 +264,12 @@ var plotPlaces = function() {
 
       if (plottedPlaces.indexOf(arnaudLocationStr) === -1) {
         // i acts as the ID here, but we don't really care
-        createPlace(i, arnaudLocation.x, arnaudLocation.y);
+        createPlace(i, arnaudLocation.x, arnaudLocation.y, false);
         plottedPlaces.push(arnaudLocationStr);
       }
       if (plottedPlaces.indexOf(ryanLocationStr) === -1) {
         // -i acts as the ID here, but we don't really care
-        createPlace(-i, ryanLocation.x, ryanLocation.y)
+        createPlace(-i, ryanLocation.x, ryanLocation.y, false)
         plottedPlaces.push(ryanLocationStr);
       }
 
