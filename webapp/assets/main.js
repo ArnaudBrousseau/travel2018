@@ -77,9 +77,11 @@ var createPath = function(pathId, startx, starty, endx, endy, isArcDown) {
 
   var start = startx + "," + starty;
   var end = endx + "," + endy;
-  var mid = (startx + endx)/2 + "," + ((starty + endy)/2 + 120);
+  var offsetY = Math.abs(0.24 * (endx-startx));
+  var offsetX = Math.abs(0.24 * (endy-starty));
+  var mid = ((startx + endx)/2 + offsetX) + "," + ((starty + endy)/2 + offsetY);
   if (isArcDown === true) {
-    mid = (startx + endx)/2 + "," + ((starty + endy)/2 - 120);
+    mid = ((startx + endx)/2 - offsetX) + "," + ((starty + endy)/2 - offsetY);
   }
 
   path.setAttributeNS(null, "d", "M" + start + " Q" + mid + " " + end);
