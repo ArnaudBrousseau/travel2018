@@ -29,6 +29,10 @@ svg|g.hide-me-from-older-browsers {
   transition: opacity 0.6s ease-in;
 }
 
+.transform-transition {
+  transition: transform 0.6s ease-out;
+}
+
 /******************************************************************************
  * Table styles
  *****************************************************************************/
@@ -57,8 +61,6 @@ td {
   top: 0;
   left: 0;
   width: 100%;
-  background: white;
-  box-shadow: 0 2px 5px #888;
   opacity: 1;
 }
 
@@ -74,7 +76,6 @@ input[type=range] {
 
 #day-indicator {
   display: block;
-  text-align: center;
-  margin: auto;
-  /* font-weight: bold; */
+  position: absolute;
+  top: 25px;
 }

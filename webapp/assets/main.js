@@ -1,4 +1,4 @@
-console.log('2018, a roller-coaster');
+console.log('2018, what a roller-coaster');
 
 
 /******************************************************************************
@@ -44,8 +44,6 @@ var toXY = function(latlngstr) {
     parseInt((MAP_HEIGHT/180.0) * (90 - lat) - FUDGE_FACTOR)
   )
 };
-
-console.log("paris", toXY("('48.856614', '2.3522219')"));
 
 /******************************************************************************
  * Base classes
@@ -156,14 +154,20 @@ var showFace = function(faceId) {
   var face = document.getElementById(faceId);
   if (face) {
     face.classList.remove('hidden');
+    face.classList.add('transform-transition');
   }
 };
 
 var hideFace = function(faceId) {
   var face = document.getElementById(faceId);
   if (face) {
+    face.classList.remove('transform-transition');
     face.classList.add('hidden');
   }
+};
+
+var ensureNonOverlapping = function(eltId, otherId) {
+  // TODO: implement me
 };
 
 /**
@@ -232,10 +236,36 @@ var placePerson = function(locStr, who) {
  *****************************************************************************/
 
 var setUpSlider = function() {
-  document.getElementById('day-slider').addEventListener('change', onSliderChange);
+  //document.getElementById('day-slider').addEventListener('change', onSliderChange);
   document.getElementById('day-slider').addEventListener('input', onSliderInput);
+  document.getElementById('day-slider').addEventListener('input', onSliderChange);
   // Show controls
   document.getElementsByClassName('controls')[0].classList.remove('hidden');
+};
+
+var moveLabel = function() {
+  var label = document.getElementById('day-indicator');
+  var slider = document.getElementById('day-slider');
+
+  var labelWidth = label.clientWidth;
+
+  var sliderWidth = slider.clientWidth;
+  var sliderOffset = 20;
+  var indicatorPosition = parseInt(
+    (parseInt(slider.value)/parseInt(slider.max)) * sliderWidth
+  );
+
+  if (indicatorPosition + labelWidth < sliderWidth) {
+    // We have space to position our label on the right of the indicator.
+    // Do it.
+    label.style.right = null;
+    label.style.left = sliderOffset + indicatorPosition + 'px';
+  } else {
+    // We have to place our label on the left
+    label.style.left = null;
+    label.style.right = sliderOffset + (sliderWidth - indicatorPosition) + 'px';
+  }
+
 };
 
 var showMap = function() {
@@ -301,10 +331,31 @@ var plotPlaces = function() {
   }
 };
 
+var updateLabel = function(content) {
+  var label = document.getElementById('day-indicator');
+  label.innerHTML = content;
+  moveLabel();
+};
+
+/**
+ * From "Fontainebleau, France ('48.404676', '2.70162')" to "Fontainebleau"
+ */
+var shortLoc = function(fullLoc) {
+  return fullLoc.split('(')[0].split(',')[0];
+};
+
+var getLabelContent = function(date, arnaudLocation, ryanLocation) {
+  if (arnaudLocation !== ryanLocation) {
+    return date + ': ' + 'Ryan in ' + shortLoc(ryanLocation) + ' // Arnaud in ' + shortLoc(arnaudLocation);
+  } else {
+    return date + ': ' + 'together in ' + shortLoc(arnaudLocation);
+  }
+}
+
 var onSliderChange = function(e) {
   var date = e.target.value;
   var isoDate = dayOfYearToDate(date);
-  document.getElementById('day-indicator').innerHTML = isoDate;
+  updateLabel(isoDate);
 
   // Now let's get the corresponding positions for both of us
   var locationData = document.getElementById('location-data');
@@ -314,6 +365,8 @@ var onSliderChange = function(e) {
     if (locationCells.length === 3) {
       var arnaudLocation = locationCells[1].innerHTML;
       var ryanLocation = locationCells[2].innerHTML;
+      var labelContent = getLabelContent(isoDate, arnaudLocation, ryanLocation);
+      updateLabel(labelContent);
 
       if (arnaudLocation !== ryanLocation) {
         placePerson(arnaudLocation, 'arnaud');
@@ -388,6 +441,7 @@ var onSliderInput = function(e) {
   var date = e.target.value;
   var isoDate = dayOfYearToDate(date);
   document.getElementById('day-indicator').innerHTML = isoDate;
+  moveLabel();
 };
 
 /******************************************************************************
