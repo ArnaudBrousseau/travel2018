@@ -7,8 +7,7 @@ body {
 .map {
   background: url('world_bg.png') top center no-repeat;
   opacity: 1;
-  margin: auto;
-  /* width: 1200px; */
+  margin: 60px auto;
   display: block;
 }
 
@@ -43,7 +42,7 @@ table {
   width: 100%;
   max-width: 1200px;
   border-collapse: collapse;
-  margin: 50px auto;
+  margin: 60px auto;
 }
 td {
   border: 2px solid white;
