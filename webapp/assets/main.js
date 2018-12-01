@@ -153,25 +153,9 @@ var showPlace = function(placeId, x, y) {
   }
 };
 
-var moveFace = function(faceId, targetX, targetY, cancelAnimation) {
+var moveFace = function(faceId, targetX, targetY) {
   var face = document.getElementById(faceId);
-  if (cancelAnimation) {
-    face.setAttributeNS(null, "transform", "translate(" + targetX + " " + targetY + ")");
-  } else {
-    var sourceX = face.getAttributeNS(null, 'data-x');
-    var sourceY = face.getAttributeNS(null, 'data-y');
-
-    var pathId = sourceX + sourceY + targetX + targetY;
-    if (document.getElementById(pathId) === null || true) {
-      face.setAttributeNS(null, "transform", "translate(" + targetX + " " + targetY + ")");
-    } else {
-      // TODO: fixme
-      face.setAttributeNS(null, "transform", "translate(0 0)");
-      animate(faceId, pathId);
-    }
-  }
-  face.setAttributeNS(null, "data-x", targetX);
-  face.setAttributeNS(null, "data-y", targetY);
+  face.setAttributeNS(null, "transform", "translate(" + targetX + " " + targetY + ")");
 };
 
 var showFace = function(faceId) {
@@ -200,31 +184,6 @@ var isFaceHidden = function(faceId) {
 };
 var ensureNonOverlapping = function(eltId, otherId) {
   // TODO: implement me
-};
-
-/**
- * Adds animations to our #animations element. Each animation looks like:
- *    <animateMotion xlink:href="#elementId" dur="0.7s" begin="0s" fill="freeze">
- *    <mpath xlink:href="#pathId" />
- */
-var animate = function(elementId, pathId) {
-  var xmlns = "http://www.w3.org/2000/svg";
-  var xlink = "http://www.w3.org/1999/xlink";
-  var animations = document.getElementById('animations');
-
-  var mpath = document.createElementNS(xmlns, "mpath");
-  mpath.setAttributeNS (xlink, "xlink:href", "#" + pathId);
-
-  var animateMotion = document.createElementNS(xmlns, "animateMotion");
-  animateMotion.setAttributeNS(xlink, "xlink:href", "#" + elementId);
-  animateMotion.setAttributeNS(null, "dur", "0.7s");
-  animateMotion.setAttributeNS(null, "fill", "freeze");
-
-  window.requestAnimationFrame(function() {
-    animateMotion.appendChild(mpath);
-    animations.appendChild(animateMotion);
-    animateMotion.beginElement();
-  });
 };
 
 var placePerson = function(locStr, who) {
@@ -391,9 +350,9 @@ var plotFaces = function() {
   // We know that 2018 start together in Paris
   var locationStr = locationCells[1].innerHTML;
   var loc = toXY(locationStr);
-  moveFace('together-face', loc.x, loc.y, true);
-  moveFace('arnaud-sad-face', loc.x, loc.y, true);
-  moveFace('ryan-sad-face', loc.x, loc.y, true);
+  moveFace('together-face', loc.x, loc.y);
+  moveFace('arnaud-sad-face', loc.x, loc.y);
+  moveFace('ryan-sad-face', loc.x, loc.y);
   hideFace('arnaud-sad-face');
   hideFace('ryan-sad-face');
 }
