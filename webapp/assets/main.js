@@ -183,6 +183,7 @@ var isFaceHidden = function(faceId) {
   }
 };
 var ensureNonOverlapping = function(eltId, otherId) {
+
   // TODO: implement me
 };
 
@@ -350,9 +351,9 @@ var plotFaces = function() {
   // We know that 2018 start together in Paris
   var locationStr = locationCells[1].innerHTML;
   var loc = toXY(locationStr);
-  moveFace('together-face', loc.x, loc.y);
   moveFace('arnaud-sad-face', loc.x, loc.y);
   moveFace('ryan-sad-face', loc.x, loc.y);
+  moveFace('together-face', loc.x, loc.y);
   hideFace('arnaud-sad-face');
   hideFace('ryan-sad-face');
 }
@@ -408,11 +409,10 @@ var onSliderChange = function(e) {
       } else {
         placePerson(arnaudLocation, 'arnaud');
         placePerson(ryanLocation, 'ryan');
+        placePerson(arnaudLocation, 'together');
 
         if (isFaceHidden('together-face')) {
           // If the face "together" was previously hidden, don't show it right away
-          placePerson(arnaudLocation, 'together');
-
           if (timer !== undefined) { clearTimeout(timer); }
           timer = setTimeout(function() {
             showFace('together-face');
