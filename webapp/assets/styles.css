@@ -61,11 +61,38 @@ td {
   opacity: 1;
 }
 
+#timeline {
+  margin-bottom: -7px;
+  margin-left: 0px;
+  position: relative;
+  height: 13px;
+  width: 100%;
+  z-index: -1;
+}
+
+#timeline span {
+  position: absolute;
+  height: 12px;
+  display: block;
+  width: 2px;
+  background-color: #e89f9f;
+}
+
+#timeline span.together {
+  background-color: #b1f5b1;
+}
+
+@media (max-width:800px) {
+  #timeline span {
+    width: 1px;
+  }
+}
+
 /******************************************************************************
  * Indicator and range styles
  *****************************************************************************/
 .range-input {
-  padding: 5px 15px 10px 10px;
+  padding: 10px 15px 10px 10px;
 }
 input[type=range] {
   width: 100%;
@@ -74,5 +101,5 @@ input[type=range] {
 #day-indicator {
   display: block;
   position: absolute;
-  top: 25px;
+  top: 32px;
 }

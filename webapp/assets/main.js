@@ -259,11 +259,29 @@ var placePerson = function(locStr, who) {
  *****************************************************************************/
 
 var setUpSlider = function() {
+  // TODO: see if listening for 'change' is necessary?
   //document.getElementById('day-slider').addEventListener('change', onSliderChange);
   document.getElementById('day-slider').addEventListener('input', onSliderInput);
   document.getElementById('day-slider').addEventListener('input', onSliderChange);
-  // Show controls
+  // Populate & Show controls
+  populateTimeline();
   document.getElementsByClassName('controls')[0].classList.remove('hidden');
+};
+
+var populateTimeline = function() {
+  var timeline = document.getElementById('timeline');
+  var rows = document.getElementsByTagName('tr');
+
+  // i=0 is the header row
+  for (var i=1; i < rows.length; i++) {
+    var span = document.createElement("span");
+    if (rows[i].classList.contains('together')) {
+      span.classList.add('together');
+    }
+    // 1/365 = 0.002739726027...
+    span.style.left = i*0.273972603 + '%';
+    timeline.appendChild(span);
+  }
 };
 
 var moveLabel = function() {
