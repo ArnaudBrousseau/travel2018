@@ -190,6 +190,14 @@ var hideFace = function(faceId) {
   }
 };
 
+var isFaceHidden = function(faceId) {
+  var face = document.getElementById(faceId);
+  if (face) {
+    return face.classList.contains('hidden');
+  } else {
+    return false;
+  }
+};
 var ensureNonOverlapping = function(eltId, otherId) {
   // TODO: implement me
 };
@@ -411,6 +419,8 @@ var getLabelContent = function(date, arnaudLocation, ryanLocation) {
   }
 }
 
+var timer;
+
 var onSliderChange = function(e) {
   var date = e.target.value;
   var isoDate = dayOfYearToDate(date);
@@ -437,11 +447,27 @@ var onSliderChange = function(e) {
         showPlace('arnaud-dot');
         showPlace('ryan-dot');
       } else {
-        placePerson(arnaudLocation, 'together');
-        showFace('together-face');
+        placePerson(arnaudLocation, 'arnaud');
+        placePerson(ryanLocation, 'ryan');
+
+        if (isFaceHidden('together-face')) {
+          // If the face "together" was previously hidden, don't show it right away
+          placePerson(arnaudLocation, 'together');
+
+          if (timer !== undefined) { clearTimeout(timer); }
+          timer = setTimeout(function() {
+            showFace('together-face');
+            hideFace('arnaud-sad-face');
+            hideFace('ryan-sad-face');
+            timer = undefined;
+          }, 80);
+        } else {
+          showFace('together-face');
+          hideFace('arnaud-sad-face');
+          hideFace('ryan-sad-face');
+        }
+
         showPlace('together-dot');
-        hideFace('arnaud-sad-face');
-        hideFace('ryan-sad-face');
         hidePlace('arnaud-dot');
         hidePlace('ryan-dot');
       }
