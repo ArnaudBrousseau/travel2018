@@ -22,13 +22,8 @@ svg|g.hide-me-from-older-browsers {
 }
 
 .hidden {
-  opacity: 0 !important;
+  display: none !important;
 }
-
-.fade {
-  transition: opacity 0.6s ease-in;
-}
-
 
 .transform-transition {
   transition: transform 0.2s ease-out;

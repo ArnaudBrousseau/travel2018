@@ -485,12 +485,17 @@ var onSliderInput = function(e) {
   moveLabel();
 };
 
+var hideTable = function() {
+  document.getElementById('location-data').classList.add('hidden');
+};
+
 /******************************************************************************
  * Ready? Get set? Go.
  *****************************************************************************/
 var start = function() {
   setUpSlider();
   showMap();
+  hideTable()
 };
 
 requestAnimationFrame(function() {
