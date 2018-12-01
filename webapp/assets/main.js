@@ -13,6 +13,7 @@ var featureDetection = function() {
   // * createElementNS
   // * appendChild
   // * requestAnimationFrame
+  // * String.trim()
 }
 
 /******************************************************************************
@@ -64,14 +65,21 @@ Point.prototype.toString = function() {
 
 /**
  * Creates a path, e.g.
- * <path id="pathId" d="M237,180 Q515,50 757,150" fill="none" stroke="#aaa" stroke-width="1"></path>
+ * <path id="237180757150" d="M237,180 Q515,50 757,150" fill="none" stroke="#aaa" stroke-width="1"></path>
  */
-var createPath = function(pathId, startx, starty, endx, endy, isArcDown) {
+var createPath = function(startx, starty, endx, endy, isArcDown) {
   var xmlns = "http://www.w3.org/2000/svg";
   var paths = document.getElementById('paths');
 
   var path = document.createElementNS(xmlns, "path");
-  path.setAttributeNS(null, "id", pathId);
+  var pathId = ''+startx+starty+endx+endy;
+
+  // Let's not draw the same path again!
+  if (document.getElementById(pathId) !== null) {
+    return;
+  }
+
+  path.setAttributeNS(null, "id", ''+startx+starty+endx+endy);
 
   var start = startx + "," + starty;
   var end = endx + "," + endy;
@@ -145,9 +153,25 @@ var showPlace = function(placeId, x, y) {
   }
 };
 
-var moveFace = function(faceId, x, y) {
+var moveFace = function(faceId, targetX, targetY, cancelAnimation) {
   var face = document.getElementById(faceId);
-  face.setAttributeNS(null, "transform", "translate(" + x + " " + y + ")");
+  if (cancelAnimation) {
+    face.setAttributeNS(null, "transform", "translate(" + targetX + " " + targetY + ")");
+  } else {
+    var sourceX = face.getAttributeNS(null, 'data-x');
+    var sourceY = face.getAttributeNS(null, 'data-y');
+
+    var pathId = sourceX + sourceY + targetX + targetY;
+    if (document.getElementById(pathId) === null || true) {
+      face.setAttributeNS(null, "transform", "translate(" + targetX + " " + targetY + ")");
+    } else {
+      // TODO: fixme
+      face.setAttributeNS(null, "transform", "translate(0 0)");
+      animate(faceId, pathId);
+    }
+  }
+  face.setAttributeNS(null, "data-x", targetX);
+  face.setAttributeNS(null, "data-y", targetY);
 };
 
 var showFace = function(faceId) {
@@ -174,7 +198,6 @@ var ensureNonOverlapping = function(eltId, otherId) {
  * Adds animations to our #animations element. Each animation looks like:
  *    <animateMotion xlink:href="#elementId" dur="0.7s" begin="0s" fill="freeze">
  *    <mpath xlink:href="#pathId" />
- * TODO: use it to animate stuff :)
  */
 var animate = function(elementId, pathId) {
   var xmlns = "http://www.w3.org/2000/svg";
@@ -270,6 +293,7 @@ var moveLabel = function() {
 
 var showMap = function() {
   plotPlaces();
+  plotFaces();
   document.getElementsByClassName('map')[0].classList.remove('hidden');
 }
 
@@ -310,15 +334,15 @@ var plotPlaces = function() {
           // We have only one path to draw
           // It arcs down if the path goes from right to left (arbitrary)
           var isArcDown = !!(ryanLocation.x-previousRyanLocation.x < 0);
-          createPath(i, previousRyanLocation.x, previousRyanLocation.y, ryanLocation.x, ryanLocation.y, isArcDown);
+          createPath(previousRyanLocation.x, previousRyanLocation.y, ryanLocation.x, ryanLocation.y, isArcDown);
         } else {
           if (ryanLocationStr != previousRyanLocationStr) {
             var isArcDown = !!(ryanLocation.x-previousRyanLocation.x < 0);
-            createPath(i, previousRyanLocation.x, previousRyanLocation.y, ryanLocation.x, ryanLocation.y, isArcDown);
+            createPath(previousRyanLocation.x, previousRyanLocation.y, ryanLocation.x, ryanLocation.y, isArcDown);
           }
           if (arnaudLocationStr != previousArnaudLocationStr) {
             var isArcDown = !!(arnaudLocation.x-previousArnaudLocation.x < 0);
-            createPath(i, previousArnaudLocation.x, previousArnaudLocation.y, arnaudLocation.x, arnaudLocation.y, isArcDown);
+            createPath(previousArnaudLocation.x, previousArnaudLocation.y, arnaudLocation.x, arnaudLocation.y, isArcDown);
           }
         }
       }
@@ -331,6 +355,23 @@ var plotPlaces = function() {
   }
 };
 
+/**
+ * This function is here to place the faces at their initial position
+ */
+var plotFaces = function() {
+  var rows = document.getElementsByTagName('tr');
+  var locationCells = rows[1].getElementsByTagName('td');
+
+  // We know that 2018 start together in Paris
+  var locationStr = locationCells[1].innerHTML;
+  var loc = toXY(locationStr);
+  moveFace('together-face', loc.x, loc.y, true);
+  moveFace('arnaud-sad-face', loc.x, loc.y, true);
+  moveFace('ryan-sad-face', loc.x, loc.y, true);
+  hideFace('arnaud-sad-face');
+  hideFace('ryan-sad-face');
+}
+
 var updateLabel = function(content) {
   var label = document.getElementById('day-indicator');
   label.innerHTML = content;
@@ -341,12 +382,12 @@ var updateLabel = function(content) {
  * From "Fontainebleau, France ('48.404676', '2.70162')" to "Fontainebleau"
  */
 var shortLoc = function(fullLoc) {
-  return fullLoc.split('(')[0].split(',')[0];
+  return fullLoc.split('(')[0].split(',')[0].trim();
 };
 
 var getLabelContent = function(date, arnaudLocation, ryanLocation) {
   if (arnaudLocation !== ryanLocation) {
-    return date + ': ' + 'Ryan in ' + shortLoc(ryanLocation) + ' // Arnaud in ' + shortLoc(arnaudLocation);
+    return date + ': ' + 'Ryan in ' + shortLoc(ryanLocation) + ', Arnaud in ' + shortLoc(arnaudLocation);
   } else {
     return date + ': ' + 'together in ' + shortLoc(arnaudLocation);
   }
