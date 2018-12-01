@@ -1,4 +1,4 @@
-console.log('2018, what a roller-coaster');
+console.log('2018, what a roller-coaster!');
 
 
 /******************************************************************************
