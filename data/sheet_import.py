@@ -16,7 +16,7 @@ GEOCODES = 'Geocodes!A2:C'
 
 
 def generate_table(location_data):
-    table = '  <table>\n'
+    table = '  <table id="location-data">\n'
     table += '    <tr>\n'
     table += '      <th>Date</th><th>Arnaud</th><th>Ryan</th>\n'
     table += '    </tr>\n'
