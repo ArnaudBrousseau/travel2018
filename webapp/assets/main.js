@@ -51,8 +51,8 @@ var toXY = function(latlngstr) {
  *****************************************************************************/
 
 function Point(x, y) {
-  this.x = x
-  this.y = y
+  this.x = parseInt(x);
+  this.y = parseInt(y);
 };
 
 Point.prototype.toString = function() {
@@ -182,9 +182,44 @@ var isFaceHidden = function(faceId) {
     return false;
   }
 };
-var ensureNonOverlapping = function(eltId, otherId) {
 
-  // TODO: implement me
+/**
+ * Check if 2 elements (referencing faces) are non-overlapping on the x axis
+ * If they are, visually separate them out by adjusting their position
+ */
+var ensureNonOverlapping = function(eltId, otherId) {
+  // Faces are 66px wide, with some padding on the sides.
+  MIN_DISTANCE = 50;
+
+  var elt = document.getElementById(eltId);
+  var other = document.getElementById(otherId);
+
+  var eltPosition = getPosition(elt);
+  var otherPosition = getPosition(other);
+
+  var diffX = eltPosition.x - otherPosition.x;
+  if (0 <= diffX && diffX < MIN_DISTANCE) {
+    var adjustment = MIN_DISTANCE - diffX;
+    eltPosition.x += parseInt(adjustment/2);
+    otherPosition.x -= parseInt(adjustment/2);
+    moveFace(eltId, eltPosition.x, eltPosition.y);
+    moveFace(otherId, otherPosition.x, otherPosition.y);
+  } else if (0 <= -diffX && -diffX < MIN_DISTANCE){
+    var adjustment = MIN_DISTANCE - (-diffX);
+    otherPosition.x += parseInt(adjustment/2);
+    eltPosition.x -= parseInt(adjustment/2);
+    moveFace(eltId, eltPosition.x, eltPosition.y);
+    moveFace(otherId, otherPosition.x, otherPosition.y);
+  }
+};
+
+/**
+ * Given an element, use its "transform" attribute to return a Point
+ */
+var getPosition = function(elt) {
+  var transformProp = elt.getAttribute('transform');
+  var position = transformProp.match(/translate\(([0-9]+) ([0-9]+)\)/);
+  return new Point(position[1], position[2]);
 };
 
 var placePerson = function(locStr, who) {
@@ -400,6 +435,7 @@ var onSliderChange = function(e) {
       if (arnaudLocation !== ryanLocation) {
         placePerson(arnaudLocation, 'arnaud');
         placePerson(ryanLocation, 'ryan');
+        ensureNonOverlapping('arnaud-sad-face', 'ryan-sad-face');
         hideFace('together-face');
         hidePlace('together-dot');
         showFace('arnaud-sad-face');
