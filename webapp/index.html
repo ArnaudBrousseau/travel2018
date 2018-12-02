@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="579" version="1.0" class="map hidden fade">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 579" width="100%" version="1.0" class="map hidden">
   <!--[if gt IE 8]><!-->
   <switch>
     <g class="hide-me-from-older-browsers">
@@ -22,38 +22,38 @@
 
       <g id="faces">
 
-        <g id="ryan-sad-face" class="hidden">
+        <g id="ryan-sad-face" class="hidden transform-transition">
           <filter id="ryan-sad" x="0%" y="0%" width="100%" height="100%">
             <feImage xlink:href="assets/ryan_sad.png"/>
           </filter>
           <circle filter="url(#ryan-sad)" cx="0" cy="-40" r="33" />
 
-          <filter id="tear" x="0%" y="0%" width="100%" height="100%">
-            <feImage xlink:href="assets/drop.svg"/>
+          <filter id="tear-ryan" x="0%" y="0%" width="100%" height="100%">
+            <feImage xlink:href="assets/tear.png"/>
           </filter>
-          <circle filter="url(#tear)" cx="5" cy="-35" r="10">
+          <circle filter="url(#tear-ryan)" cx="5" cy="-35" r="10">
             <animate attributeName="r" begin=0s dur="1s" repeatCount="indefinite" values="0; 5; 6; 5; 0" calcMode="linear" keyTimes="0; 0.2; 0.5; 0.8; 1"/>
             <animate attributeName="cy" begin="0s" dur="1s" repeatCount="indefinite" from="-35" to="-10"/>
           </circle>
         </g>
 
-        <g id="arnaud-sad-face" class="hidden">
+        <g id="arnaud-sad-face" class="hidden transform-transition">
           <filter id="arnaud-sad" x="0%" y="0%" width="100%" height="100%">
             <feImage xlink:href="assets/arnaud_sad.png"/>
           </filter>
           <circle id="arnaud-sad-circle" filter="url(#arnaud-sad)" cx="0" cy="-40" r="33" />
 
-          <filter id="tear" x="0%" y="0%" width="100%" height="100%">
-            <feImage xlink:href="assets/drop.svg"/>
+          <filter id="tear-arnaud" x="0%" y="0%" width="100%" height="100%">
+            <feImage xlink:href="assets/tear.png"/>
           </filter>
-          <circle filter="url(#tear)" cx="10" cy="-50" r="10">
+          <circle filter="url(#tear-arnaud)" cx="10" cy="-50" r="10">
             <animate attributeName="r" begin=0s dur="1s" repeatCount="indefinite" values="0; 5; 6; 5; 0" calcMode="linear" keyTimes="0; 0.2; 0.5; 0.8; 1"/>
             <animate attributeName="cy" begin="0s" dur="1s" repeatCount="indefinite" from="-40" to="-10"/>
           </circle>
 
         </g>
 
-        <g id="together-face" class="hidden">
+        <g id="together-face" class="hidden transform-transition">
           <filter id="arnaud-happy" x="0%" y="0%" width="100%" height="100%">
             <feImage xlink:href="assets/arnaud_happy.png"/>
           </filter>
@@ -81,7 +81,7 @@
   </switch>
   </svg>
 
-  <div class="controls hidden fade">
+  <div class="controls hidden">
     <div class="range-input">
       <div id="timeline">
       </div>
@@ -1854,15 +1854,18 @@
       <td>Singapore ('1.352083', '103.819836')</td>
     </tr>
   </table>
+  <footer>
+    Copyright &copy; 2018 Arnaud Brousseau. Built with map data from <a href="https://www.naturalearthdata.com" target="_blank">NaturalEarthData</a>, <a href="https://mapnik.org/" target="_blank">Mapnik</a> for rendering, and handcrafted HTML/SVG/CSS/JS to display it all.
+  </footer>
 
-  <script src="assets/main.js"></script>
-
-  <!-- TODO: replace with true GA id. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 </body>
+<script src="assets/main.js"></script>
+
+<!-- TODO: replace with true GA id. -->
+<script>
+  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+  ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
 
 </html>

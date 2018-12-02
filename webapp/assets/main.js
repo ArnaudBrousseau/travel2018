@@ -162,14 +162,12 @@ var showFace = function(faceId) {
   var face = document.getElementById(faceId);
   if (face) {
     face.classList.remove('hidden');
-    face.classList.add('transform-transition');
   }
 };
 
 var hideFace = function(faceId) {
   var face = document.getElementById(faceId);
   if (face) {
-    face.classList.remove('transform-transition');
     face.classList.add('hidden');
   }
 };

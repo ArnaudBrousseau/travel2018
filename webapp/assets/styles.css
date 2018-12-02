@@ -5,7 +5,8 @@ body {
 }
 
 .map {
-  background: url('world_bg.png') top center no-repeat;
+  background: url('world_bg.svg') top center no-repeat;
+  background-size: 100% 100%;
   opacity: 1;
   margin: 60px auto;
   display: block;
@@ -29,7 +30,11 @@ svg|g.hide-me-from-older-browsers {
   transition: transform 0.2s ease-out;
 }
 
-
+footer {
+  font-size: 12px;
+  text-align: center;
+}
+footer a { color: #222; cursor: pointer; }
 /******************************************************************************
  * Table styles
  *****************************************************************************/

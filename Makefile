@@ -3,7 +3,7 @@ map: map/venv
 	virtualenv --python=python2.7 map/venv
 	curl https://bootstrap.pypa.io/get-pip.py | map/venv/bin/python
 	map/venv/bin/pip install -r map/requirements.txt
-	map/venv/bin/python map/run.py && cp map/output.png webapp/assets/world_bg.png
+	map/venv/bin/python map/run.py && cp map/output.svg webapp/assets/world_bg.svg
 
 map/venv: map/requirements.txt
 	virtualenv --python=python2.7 map/venv

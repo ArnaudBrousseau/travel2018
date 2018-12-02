@@ -5,7 +5,7 @@ import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 stylesheet = dir_path + '/world_style.xml'
-image = dir_path + '/output.png'
+image = dir_path + '/output.svg'
 mapnik.register_fonts('/Library/Fonts/');
 
 #for face in mapnik.FontEngine.face_names(): print face
