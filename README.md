@@ -21,3 +21,13 @@ Simple webapp, progressively enhanced:
 * Step 0: just display the locations table
 * Step 1: display SVG
 * Step 2: animate it and build the controls
+
+# Deploying
+
+This is a static page, hosted with Github pages:
+
+    $ git checkout gh-pages
+    $ make
+    $ git push origin HEAD
+
+That's it!
