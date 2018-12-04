@@ -89,7 +89,7 @@ td {
 
 @media (max-width:800px) {
   #timeline span {
-    width: 1px;
+    width: 2px;
   }
 }
 
@@ -107,4 +107,19 @@ input[type=range] {
   display: block;
   position: absolute;
   top: 32px;
+}
+
+/******************************************************************************
+ * Adjustments for mobile devices
+ *****************************************************************************/
+@media (max-width:800px) {
+  #timeline span {
+    width: 3px;
+  }
+  #day-indicator {
+    font-size: 12px;
+  }
+  footer {
+    font-size: 10px;
+  }
 }
