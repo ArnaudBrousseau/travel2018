@@ -26,15 +26,13 @@ svg|g.hide-me-from-older-browsers {
   display: none !important;
 }
 
-.transform-transition {
-  transition: transform 0.2s ease-out;
-}
-
 footer {
   font-size: 12px;
   text-align: center;
+  margin-bottom: 24px;
 }
 footer a { color: #222; cursor: pointer; }
+
 /******************************************************************************
  * Table styles
  *****************************************************************************/
@@ -121,5 +119,6 @@ input[type=range] {
   }
   footer {
     font-size: 10px;
+    margin-bottom: 20px;
   }
 }

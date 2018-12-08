@@ -161,6 +161,31 @@ var showPlace = function(placeId, x, y) {
 
 var moveFace = function(faceId, targetX, targetY) {
   var face = document.getElementById(faceId);
+
+  // Cleanup previous animations
+  var previousAnimations = face.getElementsByClassName('face-animations');
+  if (previousAnimations.length > 0) {
+    for (var i=0; i<previousAnimations.length; i++) {
+      if (previousAnimations[i].getCurrentTime() > 1) {
+        previousAnimations[i].remove();
+      }
+    }
+  }
+
+  var startPos = getPosition(face);
+  if (startPos !== null) {
+    var xmlns = 'http://www.w3.org/2000/svg';
+    var transform = document.createElementNS(xmlns, 'animateTransform');
+    transform.setAttributeNS(null, 'attributeName', 'transform');
+    transform.setAttributeNS(null, 'type', 'translate');
+    transform.setAttributeNS(null, 'from', startPos.x + ' ' + startPos.y);
+    transform.setAttributeNS(null, 'to', targetX + ' ' + targetY);
+    transform.setAttributeNS(null, 'dur', '0.2s');
+    transform.setAttributeNS(null, 'class', 'face-animations');
+    face.appendChild(transform);
+    transform.beginElement();
+  }
+
   face.setAttributeNS(null, "transform", "translate(" + targetX + " " + targetY + ")");
 };
 
@@ -222,6 +247,9 @@ var ensureNonOverlapping = function(eltId, otherId) {
  */
 var getPosition = function(elt) {
   var transformProp = elt.getAttribute('transform');
+  if (transformProp === null) {
+    return null;
+  }
   var position = transformProp.match(/translate\(([0-9]+) ([0-9]+)\)/);
   return new Point(position[1], position[2]);
 };
@@ -459,7 +487,7 @@ var onSliderChange = function(e) {
             hideFace('arnaud-sad-face');
             hideFace('ryan-sad-face');
             timer = undefined;
-          }, 80);
+          }, 200);
         } else {
           showFace('together-face');
           hideFace('arnaud-sad-face');
