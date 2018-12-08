@@ -5,15 +5,21 @@ console.log('2018, what a roller-coaster!');
  * Feature detection
  *****************************************************************************/
 
-var featureDetection = function() {
-
-  // TODO: feature detection for:
-  // * getElementById
-  // * setAttributeNS
-  // * createElementNS
-  // * appendChild
-  // * requestAnimationFrame
-  // * String.trim()
+var detectMissingFeatures = function() {
+  var missingFeatures = []
+  if (!!document.getElementById === false) {
+    missingFeatures.push('getElementById');
+  }
+  if (!!HTMLElement.prototype.setAttributeNS === false) {
+    missingFeatures.push('setAttributeNS');
+  }
+  if (!!document.createElementNS === false) {
+    missingFeatures.push('createElementNS');
+  }
+  if (!!String.prototype.trim === false) {
+    missingFeatures.push('String.trim');
+  }
+  return missingFeatures;
 }
 
 /******************************************************************************
@@ -95,7 +101,7 @@ var createPath = function(startx, starty, endx, endy, isArcDown) {
   path.setAttributeNS(null, "stroke", "#aaa");
   path.setAttributeNS(null, "stroke-width", "1");
 
-  window.requestAnimationFrame(function() {
+  RAF(function() {
     paths.appendChild(path);
   });
 };
@@ -123,7 +129,7 @@ var createPlace = function(placeId, x, y, colored) {
     place.setAttributeNS(null, "r", "4");
   }
 
-  window.requestAnimationFrame(function() {
+  RAF(function() {
     places.appendChild(place);
   });
 };
@@ -526,15 +532,35 @@ var hideTable = function() {
   document.getElementById('location-data').classList.add('hidden');
 };
 
+/**
+ * Displays an error message. Right now, simply display an error with `alert`
+ */
+var displayError = function(message) {
+  alert(message);
+};
+
+var RAF = function(fn) {
+  if (!!window.requestAnimationFrame === true) {
+    return window.requestAnimationFrame(fn);
+  } else {
+    return fn.apply(this, arguments);
+  }
+};
+
 /******************************************************************************
  * Ready? Get set? Go.
  *****************************************************************************/
 var start = function() {
-  setUpSlider();
-  showMap();
-  hideTable()
+  var missingFeatures = detectMissingFeatures();
+  if (missingFeatures.length > 0) {
+    displayError('Oh no! Looks like your browser does not support the following features needed by this webapp: ' + missingFeatures)
+  } else {
+    setUpSlider();
+    showMap();
+    hideTable();
+  }
 };
 
-requestAnimationFrame(function() {
+window.requestAnimationFrame(function() {
   start();
 });
