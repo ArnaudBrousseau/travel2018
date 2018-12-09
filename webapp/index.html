@@ -14,71 +14,61 @@
 
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 579" width="100%" version="1.0" class="map hidden">
-  <!--[if gt IE 8]><!-->
-  <switch>
-    <g class="hide-me-from-older-browsers">
-      <g id="paths"></g>
-      <g id="places"></g>
+    <g id="paths"></g>
+    <g id="places"></g>
 
-      <g id="faces">
+    <g id="faces">
 
-        <g id="ryan-sad-face" class="hidden">
-          <filter id="ryan-sad" x="0%" y="0%" width="100%" height="100%">
-            <feImage xlink:href="assets/ryan_sad.png"/>
-          </filter>
-          <circle filter="url(#ryan-sad)" cx="0" cy="-40" r="33" />
+      <g id="ryan-sad-face" class="hidden">
+        <filter id="ryan-sad" x="0%" y="0%" width="100%" height="100%">
+          <feImage xlink:href="assets/ryan_sad.png"/>
+        </filter>
+        <circle filter="url(#ryan-sad)" cx="0" cy="-40" r="33" />
 
-          <filter id="tear-ryan" x="0%" y="0%" width="100%" height="100%">
-            <feImage xlink:href="assets/tear.png"/>
-          </filter>
-          <circle filter="url(#tear-ryan)" cx="5" cy="-35" r="10">
-            <animate attributeName="r" begin=0s dur="1s" repeatCount="indefinite" values="0; 5; 6; 5; 0" calcMode="linear" keyTimes="0; 0.2; 0.5; 0.8; 1"/>
-            <animate attributeName="cy" begin="0s" dur="1s" repeatCount="indefinite" from="-35" to="-10"/>
-          </circle>
-        </g>
+        <filter id="tear-ryan" x="0%" y="0%" width="100%" height="100%">
+          <feImage xlink:href="assets/tear.png"/>
+        </filter>
+        <circle filter="url(#tear-ryan)" cx="5" cy="-35" r="10">
+          <animate attributeName="r" begin=0s dur="1s" repeatCount="indefinite" values="0; 5; 6; 5; 0" calcMode="linear" keyTimes="0; 0.2; 0.5; 0.8; 1"/>
+          <animate attributeName="cy" begin="0s" dur="1s" repeatCount="indefinite" from="-35" to="-10"/>
+        </circle>
+      </g>
 
-        <g id="arnaud-sad-face" class="hidden">
-          <filter id="arnaud-sad" x="0%" y="0%" width="100%" height="100%">
-            <feImage xlink:href="assets/arnaud_sad.png"/>
-          </filter>
-          <circle id="arnaud-sad-circle" filter="url(#arnaud-sad)" cx="0" cy="-40" r="33" />
+      <g id="arnaud-sad-face" class="hidden">
+        <filter id="arnaud-sad" x="0%" y="0%" width="100%" height="100%">
+          <feImage xlink:href="assets/arnaud_sad.png"/>
+        </filter>
+        <circle id="arnaud-sad-circle" filter="url(#arnaud-sad)" cx="0" cy="-40" r="33" />
 
-          <filter id="tear-arnaud" x="0%" y="0%" width="100%" height="100%">
-            <feImage xlink:href="assets/tear.png"/>
-          </filter>
-          <circle filter="url(#tear-arnaud)" cx="10" cy="-50" r="10">
-            <animate attributeName="r" begin=0s dur="1s" repeatCount="indefinite" values="0; 5; 6; 5; 0" calcMode="linear" keyTimes="0; 0.2; 0.5; 0.8; 1"/>
-            <animate attributeName="cy" begin="0s" dur="1s" repeatCount="indefinite" from="-40" to="-10"/>
-          </circle>
+        <filter id="tear-arnaud" x="0%" y="0%" width="100%" height="100%">
+          <feImage xlink:href="assets/tear.png"/>
+        </filter>
+        <circle filter="url(#tear-arnaud)" cx="10" cy="-50" r="10">
+          <animate attributeName="r" begin=0s dur="1s" repeatCount="indefinite" values="0; 5; 6; 5; 0" calcMode="linear" keyTimes="0; 0.2; 0.5; 0.8; 1"/>
+          <animate attributeName="cy" begin="0s" dur="1s" repeatCount="indefinite" from="-40" to="-10"/>
+        </circle>
 
-        </g>
+      </g>
 
-        <g id="together-face" class="hidden">
-          <filter id="arnaud-happy" x="0%" y="0%" width="100%" height="100%">
-            <feImage xlink:href="assets/arnaud_happy.png"/>
-          </filter>
-          <circle filter="url(#arnaud-happy)" cx="-25" cy="-40" r="33" />
+      <g id="together-face" class="hidden">
+        <filter id="arnaud-happy" x="0%" y="0%" width="100%" height="100%">
+          <feImage xlink:href="assets/arnaud_happy.png"/>
+        </filter>
+        <circle filter="url(#arnaud-happy)" cx="-25" cy="-40" r="33" />
 
-          <filter id="ryan-happy" x="0%" y="0%" width="100%" height="100%">
-            <feImage xlink:href="assets/ryan_happy.png"/>
-          </filter>
-          <circle filter="url(#ryan-happy)" cx="25" cy="-40" r="33" />
+        <filter id="ryan-happy" x="0%" y="0%" width="100%" height="100%">
+          <feImage xlink:href="assets/ryan_happy.png"/>
+        </filter>
+        <circle filter="url(#ryan-happy)" cx="25" cy="-40" r="33" />
 
-          <filter id="heart" x="0%" y="0%" width="100%" height="100%">
-            <feImage xlink:href="assets/heart.png"/>
-          </filter>
-          <circle filter="url(#heart)" cx="0" cy="-50" r="15">
-            <animate attributeName="r" values="15; 20; 15" repeatCount="indefinite" begin="0s" dur="0.4s" calcMode="linear" keyTimes="0; 0.5; 1"/>
-          </circle>
-        </g>
-      </g> <!-- faces -->
-    </g> <!-- hide-me-from-older-browsers -->
-
-    <foreignObject>
-      <!--<![endif]-->
-      TODO: Fallback HTML
-    </foreignObject>
-  </switch>
+        <filter id="heart" x="0%" y="0%" width="100%" height="100%">
+          <feImage xlink:href="assets/heart.png"/>
+        </filter>
+        <circle filter="url(#heart)" cx="0" cy="-50" r="15">
+          <animate attributeName="r" values="15; 20; 15" repeatCount="indefinite" begin="0s" dur="0.4s" calcMode="linear" keyTimes="0; 0.5; 1"/>
+        </circle>
+      </g>
+    </g> <!-- faces -->
   </svg>
 
   <div class="controls hidden">
@@ -89,7 +79,8 @@
       <span id="day-indicator">&nbsp;↑ Move me :)</span>
     </div>
   </div>
-  <table id="location-data">
+
+  <table id="location-data" class="hidden">
     <tr>
       <th>Date</th><th>Arnaud</th><th>Ryan</th>
     </tr>
@@ -1919,9 +1910,20 @@
       <td>Bangkok, Thailand ('13.7563309', '100.5017651')</td>
     </tr>
   </table>
+
+  <p id="loader">Loading...</p>
+
+  <noscript>
+    <h1>Sorry!</h1>
+    <p>
+      Looks like your browser doesn't have JS enabled.
+    </p>
+  </noscript>
+
   <footer>
     Copyright &copy; 2018 Arnaud Brousseau. Built with map data from <a href="https://www.naturalearthdata.com" target="_blank">NaturalEarthData</a>, <a href="https://mapnik.org/" target="_blank">Mapnik</a> for rendering, and handcrafted HTML/SVG/CSS/JS to display it all.
   </footer>
+
 
 </body>
 <script src="assets/main.js"></script>

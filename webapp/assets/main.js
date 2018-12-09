@@ -19,6 +19,9 @@ var detectMissingFeatures = function() {
   if (!!String.prototype.trim === false) {
     missingFeatures.push('String.trim');
   }
+  if (!!typeof window.SVGRect === "undefined") {
+    missingFeatures.push('SVG');
+  }
   return missingFeatures;
 }
 
@@ -556,8 +559,8 @@ var onSliderInput = function(e) {
   moveLabel();
 };
 
-var hideTable = function() {
-  document.getElementById('location-data').classList.add('hidden');
+var showTable = function() {
+  document.getElementById('location-data').classList.remove('hidden');
 };
 
 /**
@@ -566,6 +569,10 @@ var hideTable = function() {
 var displayError = function(message) {
   alert(message);
 };
+
+var hideLoader = function() {
+  document.getElementById('loader').classList.add('hidden');
+}
 
 var RAF = function(fn) {
   if (!!window.requestAnimationFrame === true) {
@@ -582,10 +589,11 @@ var start = function() {
   var missingFeatures = detectMissingFeatures();
   if (missingFeatures.length > 0) {
     displayError('Oh no! Looks like your browser does not support the following features needed by this webapp: ' + missingFeatures)
+    showTable();
   } else {
     setUpSlider();
     showMap();
-    hideTable();
+    hideLoader();
   }
 };
 
