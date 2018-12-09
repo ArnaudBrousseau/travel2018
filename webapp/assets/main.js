@@ -5,15 +5,24 @@ console.log('2018, what a roller-coaster!');
  * Feature detection
  *****************************************************************************/
 
-var featureDetection = function() {
-
-  // TODO: feature detection for:
-  // * getElementById
-  // * setAttributeNS
-  // * createElementNS
-  // * appendChild
-  // * requestAnimationFrame
-  // * String.trim()
+var detectMissingFeatures = function() {
+  var missingFeatures = []
+  if (!!document.getElementById === false) {
+    missingFeatures.push('getElementById');
+  }
+  if (!!HTMLElement.prototype.setAttributeNS === false) {
+    missingFeatures.push('setAttributeNS');
+  }
+  if (!!document.createElementNS === false) {
+    missingFeatures.push('createElementNS');
+  }
+  if (!!String.prototype.trim === false) {
+    missingFeatures.push('String.trim');
+  }
+  if (!!typeof window.SVGRect === "undefined") {
+    missingFeatures.push('SVG');
+  }
+  return missingFeatures;
 }
 
 /******************************************************************************
@@ -95,7 +104,7 @@ var createPath = function(startx, starty, endx, endy, isArcDown) {
   path.setAttributeNS(null, "stroke", "#aaa");
   path.setAttributeNS(null, "stroke-width", "1");
 
-  window.requestAnimationFrame(function() {
+  RAF(function() {
     paths.appendChild(path);
   });
 };
@@ -123,7 +132,7 @@ var createPlace = function(placeId, x, y, colored) {
     place.setAttributeNS(null, "r", "4");
   }
 
-  window.requestAnimationFrame(function() {
+  RAF(function() {
     places.appendChild(place);
   });
 };
@@ -155,6 +164,31 @@ var showPlace = function(placeId, x, y) {
 
 var moveFace = function(faceId, targetX, targetY) {
   var face = document.getElementById(faceId);
+
+  // Cleanup previous animations
+  var previousAnimations = face.getElementsByClassName('face-animations');
+  if (previousAnimations.length > 0) {
+    for (var i=0; i<previousAnimations.length; i++) {
+      if (previousAnimations[i].getCurrentTime() > 1) {
+        previousAnimations[i].remove();
+      }
+    }
+  }
+
+  var startPos = getPosition(face);
+  if (startPos !== null) {
+    var xmlns = 'http://www.w3.org/2000/svg';
+    var transform = document.createElementNS(xmlns, 'animateTransform');
+    transform.setAttributeNS(null, 'attributeName', 'transform');
+    transform.setAttributeNS(null, 'type', 'translate');
+    transform.setAttributeNS(null, 'from', startPos.x + ' ' + startPos.y);
+    transform.setAttributeNS(null, 'to', targetX + ' ' + targetY);
+    transform.setAttributeNS(null, 'dur', '0.2s');
+    transform.setAttributeNS(null, 'class', 'face-animations');
+    face.appendChild(transform);
+    transform.beginElement();
+  }
+
   face.setAttributeNS(null, "transform", "translate(" + targetX + " " + targetY + ")");
 };
 
@@ -216,6 +250,9 @@ var ensureNonOverlapping = function(eltId, otherId) {
  */
 var getPosition = function(elt) {
   var transformProp = elt.getAttribute('transform');
+  if (transformProp === null) {
+    return null;
+  }
   var position = transformProp.match(/translate\(([0-9]+) ([0-9]+)\)/);
   return new Point(position[1], position[2]);
 };
@@ -453,7 +490,7 @@ var onSliderChange = function(e) {
             hideFace('arnaud-sad-face');
             hideFace('ryan-sad-face');
             timer = undefined;
-          }, 80);
+          }, 200);
         } else {
           showFace('together-face');
           hideFace('arnaud-sad-face');
@@ -522,19 +559,44 @@ var onSliderInput = function(e) {
   moveLabel();
 };
 
-var hideTable = function() {
-  document.getElementById('location-data').classList.add('hidden');
+var showTable = function() {
+  document.getElementById('location-data').classList.remove('hidden');
+};
+
+/**
+ * Displays an error message. Right now, simply display an error with `alert`
+ */
+var displayError = function(message) {
+  alert(message);
+};
+
+var hideLoader = function() {
+  document.getElementById('loader').classList.add('hidden');
+}
+
+var RAF = function(fn) {
+  if (!!window.requestAnimationFrame === true) {
+    return window.requestAnimationFrame(fn);
+  } else {
+    return fn.apply(this, arguments);
+  }
 };
 
 /******************************************************************************
  * Ready? Get set? Go.
  *****************************************************************************/
 var start = function() {
-  setUpSlider();
-  showMap();
-  hideTable()
+  var missingFeatures = detectMissingFeatures();
+  if (missingFeatures.length > 0) {
+    displayError('Oh no! Looks like your browser does not support the following features needed by this webapp: ' + missingFeatures)
+    showTable();
+  } else {
+    setUpSlider();
+    showMap();
+    hideLoader();
+  }
 };
 
-requestAnimationFrame(function() {
+window.requestAnimationFrame(function() {
   start();
 });
