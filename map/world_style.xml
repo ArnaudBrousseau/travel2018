@@ -3,13 +3,14 @@
   <Style name="land-style">
     <Rule>
       <PolygonSymbolizer fill="#b9e0df" simplify="0.9" smooth="1.0" />
+      <!--<Filter>[scalerank] = 1</Filter>-->
     </Rule>
   </Style>
   <Layer name="land" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     <StyleName>land-style</StyleName>
     <Datasource>
       <Parameter name="type">shape</Parameter>
-      <Parameter name="file">data/ne_10m_land.shp</Parameter>
+      <Parameter name="file">data/ne_110m_land.shp</Parameter>
     </Datasource>
   </Layer>
 </Map>
