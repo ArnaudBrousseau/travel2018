@@ -1,3 +1,15 @@
+# Purpose
+
+This repo tries to accomplish a bunch of different things:
+
+* visualize travel data from 2018
+* explore the process of map creation from pure data (see "Map", below)
+* play with the Google Spreadsheet API instead of having to deal with a DB
+  (see "Data" below)
+* learn about SVG as a technology; in particular its scaling and animation features
+* avoid using JS or CSS framework for once; only vanilla allowed. This means
+  doing feature-detection and progressive enhancement by hand, too!
+
 # Map
 
 Built with data from [NaturalEarthData](https://www.naturalearthdata.com) and
@@ -16,11 +28,10 @@ content in `webapp/index.html`.
 
 # Webapp
 
-Simple webapp, progressively enhanced:
+No framework allowed here! Pure hand-written HTML/SVG/CSS/JS.
 
-* Step 0: just display the locations table
-* Step 1: display SVG
-* Step 2: animate it and build the controls
+I'm also trying to do progressive enhancement. The data is there to begin with
+in a `<table>`, and the visualization elements built from this piece by piece.
 
 # Deploying
 
