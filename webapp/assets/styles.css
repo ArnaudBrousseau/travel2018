@@ -75,11 +75,6 @@ td {
   background-color: #b1f5b1;
 }
 
-@media (max-width:800px) {
-  #timeline span {
-    width: 2px;
-  }
-}
 
 /******************************************************************************
  * Indicator and range styles
@@ -98,6 +93,28 @@ input[type=range] {
 }
 
 /******************************************************************************
+ * Tip
+ *****************************************************************************/
+#landscape-tip {
+  display: none;
+  background: #fff;
+  border: 1px #999 solid;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  padding: 10px;
+  font-size: 12px;
+}
+#landscape-tip p {
+  margin: 0;
+}
+#landscape-tip a {
+  display: block;
+  margin-top: 10px;
+  text-align: right;
+}
+
+/******************************************************************************
  * Adjustments for mobile devices
  *****************************************************************************/
 @media (max-width:800px) {
@@ -110,5 +127,12 @@ input[type=range] {
   footer {
     font-size: 10px;
     margin-bottom: 20px;
+  }
+}
+
+/* TODO: and (max-width: 800px)? */
+@media (orientation: portrait) {
+  #landscape-tip {
+    display: block;
   }
 }

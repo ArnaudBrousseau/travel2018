@@ -574,6 +574,15 @@ var hideLoader = function() {
   document.getElementById('loader').classList.add('hidden');
 }
 
+var setupTip = function() {
+  var tipBox = document.getElementById('landscape-tip');
+  var tipLink = document.getElementById('landscape-tip-close');
+
+  tipLink.addEventListener('click', function() {
+    tipBox.remove();
+  });
+};
+
 var RAF = function(fn) {
   if (!!window.requestAnimationFrame === true) {
     return window.requestAnimationFrame(fn);
@@ -594,6 +603,7 @@ var start = function() {
     setUpSlider();
     showMap();
     hideLoader();
+    setupTip();
   }
 };
 
