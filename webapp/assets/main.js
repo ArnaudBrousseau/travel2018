@@ -162,18 +162,25 @@ var showPlace = function(placeId, x, y) {
   }
 };
 
-var moveFace = function(faceId, targetX, targetY) {
-  var face = document.getElementById(faceId);
-
-  // Cleanup previous animations
-  var previousAnimations = face.getElementsByClassName('face-animations');
-  if (previousAnimations.length > 0) {
-    for (var i=0; i<previousAnimations.length; i++) {
-      if (previousAnimations[i].getCurrentTime() > 1) {
-        previousAnimations[i].remove();
+var cleanupAnimationTimer = undefined;
+var cleanupAnimations = function() {
+  if (cleanupAnimationTimer) {
+    window.clearTimeout(cleanupAnimationTimer);
+  }
+  cleanupAnimationTimer = window.setTimeout(function() {
+    var previousAnimations = document.getElementsByClassName('face-animations');
+    if (previousAnimations.length > 0) {
+      for (var i=0; i<previousAnimations.length; i++) {
+        if (previousAnimations[i].getCurrentTime() > 1) {
+          previousAnimations[i].remove();
+        }
       }
     }
-  }
+  }, 1000);
+};
+
+var moveFace = function(faceId, targetX, targetY) {
+  var face = document.getElementById(faceId);
 
   var startPos = getPosition(face);
   if (startPos !== null) {
@@ -187,6 +194,7 @@ var moveFace = function(faceId, targetX, targetY) {
     transform.setAttributeNS(null, 'class', 'face-animations');
     face.appendChild(transform);
     transform.beginElement();
+    cleanupAnimations();
   }
 
   face.setAttributeNS(null, "transform", "translate(" + targetX + " " + targetY + ")");
@@ -250,10 +258,10 @@ var ensureNonOverlapping = function(eltId, otherId) {
  */
 var getPosition = function(elt) {
   var transformProp = elt.getAttribute('transform');
-  if (transformProp === null) {
+  if (transformProp === null || transformProp === undefined) {
     return null;
   }
-  var position = transformProp.match(/translate\(([0-9]+) ([0-9]+)\)/);
+  var position = transformProp.match(/translate\(([0-9.]+) ([0-9.]+)\)/);
   return new Point(position[1], position[2]);
 };
 
