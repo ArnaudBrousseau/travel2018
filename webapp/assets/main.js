@@ -458,11 +458,10 @@ var getLabelContent = function(date, arnaudLocation, ryanLocation) {
 }
 
 var timer;
-
+var currentLocations;
 var onSliderChange = function(e) {
   var date = e.target.value;
   var isoDate = dayOfYearToDate(date);
-  updateLabel(isoDate);
 
   // Now let's get the corresponding positions for both of us
   var locationData = document.getElementById('location-data');
@@ -475,39 +474,44 @@ var onSliderChange = function(e) {
       var labelContent = getLabelContent(isoDate, arnaudLocation, ryanLocation);
       updateLabel(labelContent);
 
-      if (arnaudLocation !== ryanLocation) {
-        placePerson(arnaudLocation, 'arnaud');
-        placePerson(ryanLocation, 'ryan');
-        ensureNonOverlapping('arnaud-sad-face', 'ryan-sad-face');
-        hideFace('together-face');
-        hidePlace('together-dot');
-        showFace('arnaud-sad-face');
-        showFace('ryan-sad-face');
-        showPlace('arnaud-dot');
-        showPlace('ryan-dot');
+      if (currentLocations === arnaudLocation + ryanLocation) {
+        return;
       } else {
-        placePerson(arnaudLocation, 'arnaud');
-        placePerson(ryanLocation, 'ryan');
-        placePerson(arnaudLocation, 'together');
+        currentLocations = arnaudLocation + ryanLocation;
+        if (arnaudLocation !== ryanLocation) {
+          placePerson(arnaudLocation, 'arnaud');
+          placePerson(ryanLocation, 'ryan');
+          ensureNonOverlapping('arnaud-sad-face', 'ryan-sad-face');
+          hideFace('together-face');
+          hidePlace('together-dot');
+          showFace('arnaud-sad-face');
+          showFace('ryan-sad-face');
+          showPlace('arnaud-dot');
+          showPlace('ryan-dot');
+        } else {
+          placePerson(arnaudLocation, 'arnaud');
+          placePerson(ryanLocation, 'ryan');
+          placePerson(arnaudLocation, 'together');
 
-        if (isFaceHidden('together-face')) {
-          // If the face "together" was previously hidden, don't show it right away
-          if (timer !== undefined) { clearTimeout(timer); }
-          timer = setTimeout(function() {
+          if (isFaceHidden('together-face')) {
+            // If the face "together" was previously hidden, don't show it right away
+            if (timer !== undefined) { clearTimeout(timer); }
+            timer = setTimeout(function() {
+              showFace('together-face');
+              hideFace('arnaud-sad-face');
+              hideFace('ryan-sad-face');
+              timer = undefined;
+            }, 200);
+          } else {
             showFace('together-face');
             hideFace('arnaud-sad-face');
             hideFace('ryan-sad-face');
-            timer = undefined;
-          }, 200);
-        } else {
-          showFace('together-face');
-          hideFace('arnaud-sad-face');
-          hideFace('ryan-sad-face');
-        }
+          }
 
-        showPlace('together-dot');
-        hidePlace('arnaud-dot');
-        hidePlace('ryan-dot');
+          showPlace('together-dot');
+          hidePlace('arnaud-dot');
+          hidePlace('ryan-dot');
+        }
       }
     } else {
       console.error('Expected 3 <td>s in: ' + locationCells);
