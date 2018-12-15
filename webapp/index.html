@@ -24,8 +24,11 @@
       <g id="paths"></g>
       <g id="places"></g>
 
-      <text x="600" y="210" text-anchor="middle" id="date-display" fill="#ffffff">
-      </text>
+      <g id="date-display-group">
+        <text x="320" y="36" text-anchor="right" id="left" fill="#444" class="disable-selection">&#10094</text>
+        <text x="600" y="36" text-anchor="middle" id="date-display" fill="#444">Traveling Through 2018</text>
+        <text x="860" y="36" text-anchor="left" id="right" fill="#444" class="disable-selection">&#10095;</text>
+      </g>
 
       <g id="faces">
         <g id="ryan-sad-face" class="hidden">
@@ -85,7 +88,7 @@
         <div id="timeline">
         </div>
         <input type="range" name="day" min="1" max="365" value="1" step="1" id="day-slider"/>
-        <span id="day-indicator">&nbsp;↑ Move me :)</span>
+        <span id="day-indicator">&nbsp;↑ Move me, or click on the arrows below!</span>
       </div>
     </div>
 

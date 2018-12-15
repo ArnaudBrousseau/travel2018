@@ -113,14 +113,16 @@ var createPath = function(startx, starty, endx, endy, isArcDown) {
  * Creates a place, e.g.
  * <circle id="placeId" cx="237" cy="180" r="4" stroke="#db9510" fill="#e9bb63" />
  */
-var createPlace = function(placeId, x, y, colored) {
+var createPlace = function(placeId, x, y, colored, labelContent) {
   var xmlns = "http://www.w3.org/2000/svg";
   var places = document.getElementById('places');
 
+  var group = document.createElementNS(xmlns, "g");
+  group = document.createElementNS(xmlns, "g");
+  group.setAttributeNS(null, "transform", "translate(" + x + " " + y + ")");
+  group.setAttributeNS(null, "id", placeId);
+
   var place = document.createElementNS(xmlns, "circle");
-  place.setAttributeNS(null, "id", placeId);
-  place.setAttributeNS(null, "cx", x);
-  place.setAttributeNS(null, "cy", y);
 
   if (colored === true) {
     place.setAttributeNS(null, "r", "4");
@@ -132,18 +134,51 @@ var createPlace = function(placeId, x, y, colored) {
     place.setAttributeNS(null, "r", "4");
   }
 
+
+  var label = document.createElementNS(xmlns, "text");
+  label.setAttributeNS(null, "id", placeId + "-label");
+  label.setAttributeNS(null, "x", 0);
+  label.setAttributeNS(null, "y", 20);
+  label.setAttributeNS(null, "fill", "#444");
+  label.setAttributeNS(null, "text-anchor", "middle");
+  label.innerHTML = labelContent;
+
   RAF(function() {
-    places.appendChild(place);
+    group.appendChild(place);
+    group.appendChild(label);
+    places.appendChild(group);
   });
 };
 
 /**
- * Moves a previously created place
+ * Moves a previously created place and optionally updates its label
  */
-var movePlace = function(placeId, x, y) {
+var movePlace = function(placeId, x, y, labelContent) {
   var place = document.getElementById(placeId);
-  place.setAttributeNS(null, "cx", x);
-  place.setAttributeNS(null, "cy", y);
+  place.setAttributeNS(null, "transform", "translate(" + x + " " + y + ")");
+
+  var labelContent = labelContent || '';
+  var label = document.getElementById(placeId + "-label");
+  label.innerHTML = labelContent;
+  label.setAttributeNS(null, "x", 0);
+};
+
+var updateLabel = function(placeId, labelContent) {
+  var label = document.getElementById(placeId + "-label");
+  label.innerHTML = labelContent;
+};
+
+/**
+ * That's a bit tricky. The x, y pair that we're receiving is an absolute
+ * coordinate pair. But labels are within a <g> and placed with relative
+ * coordinates.
+ */
+var moveLabel = function(placeId, x) {
+  var place = document.getElementById(placeId);
+  var placePosition = getPosition(place);
+
+  var label = document.getElementById(placeId + "-label");
+  label.setAttributeNS(null, "x", x-placePosition.x);
 };
 
 /**
@@ -224,33 +259,37 @@ var isFaceHidden = function(faceId) {
 };
 
 /**
- * Check if 2 elements (referencing faces) are non-overlapping on the x axis
+ * Check if 2 elements are non-overlapping on the x axis
  * If they are, visually separate them out by adjusting their position
  */
-var ensureNonOverlapping = function(eltId, otherId) {
-  // Faces are 66px wide, with some padding on the sides.
-  MIN_DISTANCE = 50;
-
+var positionToPreventOverlap = function(eltId, otherId) {
   var elt = document.getElementById(eltId);
   var other = document.getElementById(otherId);
+
+  var minDistance = elt.getBBox().width / 2 + other.getBBox().width / 2 + 10;
 
   var eltPosition = getPosition(elt);
   var otherPosition = getPosition(other);
 
   var diffX = eltPosition.x - otherPosition.x;
-  if (0 <= diffX && diffX < MIN_DISTANCE) {
-    var adjustment = MIN_DISTANCE - diffX;
-    eltPosition.x += parseInt(adjustment/2);
-    otherPosition.x -= parseInt(adjustment/2);
-    moveFace(eltId, eltPosition.x, eltPosition.y);
-    moveFace(otherId, otherPosition.x, otherPosition.y);
-  } else if (0 <= -diffX && -diffX < MIN_DISTANCE){
-    var adjustment = MIN_DISTANCE - (-diffX);
-    otherPosition.x += parseInt(adjustment/2);
-    eltPosition.x -= parseInt(adjustment/2);
-    moveFace(eltId, eltPosition.x, eltPosition.y);
-    moveFace(otherId, otherPosition.x, otherPosition.y);
+
+  var newPositions = [];
+
+  if (0 <= diffX && diffX < minDistance) {
+    var adjustment = minDistance - diffX;
+    newPositions = [
+      [eltPosition.x + parseInt(adjustment/2), eltPosition.y],
+      [otherPosition.x - parseInt(adjustment/2), otherPosition.y]
+    ]
+  } else if (0 <= -diffX && -diffX < minDistance){
+    var adjustment = minDistance - (-diffX);
+    newPositions  = [
+      [eltPosition.x - parseInt(adjustment/2), eltPosition.y],
+      [otherPosition.x + parseInt(adjustment/2), otherPosition.y]
+    ]
   }
+
+  return newPositions;
 };
 
 /**
@@ -267,30 +306,31 @@ var getPosition = function(elt) {
 
 var placePerson = function(locStr, who) {
     var loc = toXY(locStr);
+    var label = shortLoc(locStr);
 
     switch (who) {
       case 'arnaud':
         if (document.getElementById('arnaud-dot')) {
-          movePlace('arnaud-dot', loc.x, loc.y);
+          movePlace('arnaud-dot', loc.x, loc.y, label);
         } else {
-          createPlace('arnaud-dot', loc.x, loc.y, true);
+          createPlace('arnaud-dot', loc.x, loc.y, true, label);
         }
         moveFace('arnaud-sad-face', loc.x, loc.y);
 
         break;
       case 'ryan':
         if (document.getElementById('ryan-dot')) {
-          movePlace('ryan-dot', loc.x, loc.y);
+          movePlace('ryan-dot', loc.x, loc.y, label);
         } else {
-          createPlace('ryan-dot', loc.x, loc.y, true);
+          createPlace('ryan-dot', loc.x, loc.y, true, label);
         }
         moveFace('ryan-sad-face', loc.x, loc.y);
         break;
       case 'together':
         if (document.getElementById('together-dot')) {
-          movePlace('together-dot', loc.x, loc.y);
+          movePlace('together-dot', loc.x, loc.y, label);
         } else {
-          createPlace('together-dot', loc.x, loc.y, true);
+          createPlace('together-dot', loc.x, loc.y, true, label);
         }
         moveFace('together-face', loc.x, loc.y);
         break;
@@ -305,10 +345,8 @@ var placePerson = function(locStr, who) {
  *****************************************************************************/
 
 var setUpSlider = function() {
-  // TODO: see if listening for 'change' is necessary?
-  //document.getElementById('day-slider').addEventListener('change', onSliderChange);
-  document.getElementById('day-slider').addEventListener('input', onSliderInput);
   document.getElementById('day-slider').addEventListener('input', onSliderChange);
+  document.getElementById('day-slider').addEventListener('change', onSliderChange);
   // Populate & Show controls
   populateTimeline();
   document.getElementsByClassName('controls')[0].classList.remove('hidden');
@@ -330,30 +368,21 @@ var populateTimeline = function() {
   }
 };
 
-var moveLabel = function() {
-  var label = document.getElementById('day-indicator');
+var setUpButtons = function() {
   var slider = document.getElementById('day-slider');
 
-  var labelWidth = label.clientWidth;
-
-  var sliderWidth = slider.clientWidth;
-  var sliderOffset = 20;
-  var indicatorPosition = parseInt(
-    (parseInt(slider.value)/parseInt(slider.max)) * sliderWidth
-  );
-
-  if (indicatorPosition + labelWidth < sliderWidth) {
-    // We have space to position our label on the right of the indicator.
-    // Do it.
-    label.style.right = null;
-    label.style.left = sliderOffset + indicatorPosition + 'px';
-  } else {
-    // We have to place our label on the left
-    label.style.left = null;
-    label.style.right = sliderOffset + (sliderWidth - indicatorPosition) + 'px';
-  }
-
-};
+  // No need to check that the value is between 1 and 365. Setting a value of
+  // -2 or 370 will result in the min/max being set since these limits are set
+  // in HTML.
+  document.getElementById('right').addEventListener('click', function() {
+    slider.value = parseInt(slider.value) + 1;
+    onSliderChange();
+  });
+  document.getElementById('left').addEventListener('click', function() {
+    slider.value = parseInt(slider.value) - 1;
+    onSliderChange();
+  });
+}
 
 var showMap = function() {
   plotPlaces();
@@ -382,12 +411,12 @@ var plotPlaces = function() {
 
       if (plottedPlaces.indexOf(arnaudLocationStr) === -1) {
         // i acts as the ID here, but we don't really care
-        createPlace(i, arnaudLocation.x, arnaudLocation.y, false);
+        createPlace(i, arnaudLocation.x, arnaudLocation.y, false, '');
         plottedPlaces.push(arnaudLocationStr);
       }
       if (plottedPlaces.indexOf(ryanLocationStr) === -1) {
         // -i acts as the ID here, but we don't really care
-        createPlace(-i, ryanLocation.x, ryanLocation.y, false)
+        createPlace(-i, ryanLocation.x, ryanLocation.y, false, '')
         plottedPlaces.push(ryanLocationStr);
       }
 
@@ -436,26 +465,12 @@ var plotFaces = function() {
   hideFace('ryan-sad-face');
 }
 
-var updateLabel = function(content) {
-  var label = document.getElementById('day-indicator');
-  label.innerHTML = content;
-  moveLabel();
-};
-
 /**
  * From "Fontainebleau, France ('48.404676', '2.70162')" to "Fontainebleau"
  */
 var shortLoc = function(fullLoc) {
   return fullLoc.split('(')[0].split(',')[0].trim();
 };
-
-var getLabelContent = function(date, arnaudLocation, ryanLocation) {
-  if (arnaudLocation !== ryanLocation) {
-    return date + ': ' + 'Ryan in ' + shortLoc(ryanLocation) + ', Arnaud in ' + shortLoc(arnaudLocation);
-  } else {
-    return date + ': ' + 'together in ' + shortLoc(arnaudLocation);
-  }
-}
 
 var displayDate = function(isoDate) {
   var date = new Date(isoDate)
@@ -478,8 +493,10 @@ var displayDate = function(isoDate) {
 
 var timer;
 var currentLocations;
-var onSliderChange = function(e) {
-  var date = e.target.value;
+var onSliderChange = function() {
+  document.getElementById('day-indicator').classList.add('hidden');
+  var slider = document.getElementById('day-slider');
+  var date = slider.value;
   var isoDate = dayOfYearToDate(date);
 
   displayDate(isoDate);
@@ -492,8 +509,6 @@ var onSliderChange = function(e) {
     if (locationCells.length === 3) {
       var arnaudLocation = locationCells[1].innerHTML;
       var ryanLocation = locationCells[2].innerHTML;
-      var labelContent = getLabelContent(isoDate, arnaudLocation, ryanLocation);
-      updateLabel(labelContent);
 
       if (currentLocations === arnaudLocation + ryanLocation) {
         return;
@@ -502,16 +517,31 @@ var onSliderChange = function(e) {
         if (arnaudLocation !== ryanLocation) {
           placePerson(arnaudLocation, 'arnaud');
           placePerson(ryanLocation, 'ryan');
-          ensureNonOverlapping('arnaud-sad-face', 'ryan-sad-face');
+          var newFacePositions = positionToPreventOverlap('arnaud-sad-face', 'ryan-sad-face');
+          if (newFacePositions.length) {
+            moveFace('arnaud-sad-face', newFacePositions[0][0], newFacePositions[0][1]);
+            moveFace('ryan-sad-face', newFacePositions[1][0], newFacePositions[1][1]);
+          }
           hideFace('together-face');
           hidePlace('together-dot');
           showFace('arnaud-sad-face');
           showFace('ryan-sad-face');
+
           showPlace('arnaud-dot');
           showPlace('ryan-dot');
+          var newLabelPositions = positionToPreventOverlap('arnaud-dot', 'ryan-dot');
+          if (newLabelPositions.length) {
+            moveLabel('arnaud-dot', newLabelPositions[0][0]);
+            moveLabel('ryan-dot', newLabelPositions[1][0]);
+          }
         } else {
           placePerson(arnaudLocation, 'arnaud');
           placePerson(ryanLocation, 'ryan');
+          var newFacePositions = positionToPreventOverlap('arnaud-sad-face', 'ryan-sad-face');
+          if (newFacePositions.length) {
+            moveFace('arnaud-sad-face', newFacePositions[0][0], newFacePositions[0][1]);
+            moveFace('ryan-sad-face', newFacePositions[1][0], newFacePositions[1][1]);
+          }
           placePerson(arnaudLocation, 'together');
 
           if (isFaceHidden('together-face')) {
@@ -584,14 +614,6 @@ var padDay = function(day) {
   }
 };
 
-var onSliderInput = function(e) {
-  // "date" is 1 through 365. 2018 isn't a leap year.
-  var date = e.target.value;
-  var isoDate = dayOfYearToDate(date);
-  document.getElementById('day-indicator').innerHTML = isoDate;
-  moveLabel();
-};
-
 var showTable = function() {
   document.getElementById('location-data').classList.remove('hidden');
 };
@@ -634,6 +656,7 @@ var start = function() {
     showTable();
   } else {
     setUpSlider();
+    setUpButtons();
     showMap();
     hideLoader();
     setupTip();
