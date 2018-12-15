@@ -143,8 +143,7 @@ input[type=range] {
   }
 }
 
-/* TODO: and (max-width: 800px)? */
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 800px) {
   #landscape-tip {
     display: block;
   }
