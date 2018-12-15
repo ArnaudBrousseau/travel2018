@@ -629,13 +629,40 @@ var hideLoader = function() {
   document.getElementById('loader').classList.add('hidden');
 }
 
-var setupTip = function() {
+var setUpTip = function() {
   var tipBox = document.getElementById('landscape-tip');
   var tipLink = document.getElementById('landscape-tip-close');
 
   tipLink.addEventListener('click', function() {
     tipBox.remove();
   });
+};
+
+var setUpFullscreen = function() {
+  var fullscreen = document.getElementById('fullscreen');
+  var d = document.documentElement;
+  var fullscreenFn = d.requestFullscreen || d.mozRequestFullscreen || d.webkitRequestFullScreen || d.msRequestFullscreen;
+
+  if (fullscreenFn) {
+    var fullscreenLink = document.getElementById('fullscreen-link');
+    fullscreenLink.addEventListener('click', function() {
+      fullscreenFn.call(d);
+      fullscreen.classList.add('hidden');
+    });
+    fullscreen.classList.remove('hidden');
+  }
+};
+
+var launchIntoFullscreen = function(element)  {
+  if(element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if(element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  } else if(element.msRequestFullscreen) {
+    element.msRequestFullscreen();
+  }
 };
 
 var RAF = function(fn) {
@@ -659,7 +686,8 @@ var start = function() {
     setUpButtons();
     showMap();
     hideLoader();
-    setupTip();
+    setUpTip();
+    setUpFullscreen();
   }
 };
 
