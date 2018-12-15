@@ -91,6 +91,11 @@ input[type=range] {
   position: absolute;
   top: 32px;
 }
+#date-display {
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 0 -2px 1px #c1dedd, 0px 2px 1px #c1dedd, -2px 0px 1px #c1dedd;
+}
 
 /******************************************************************************
  * Tip

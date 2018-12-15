@@ -162,18 +162,25 @@ var showPlace = function(placeId, x, y) {
   }
 };
 
-var moveFace = function(faceId, targetX, targetY) {
-  var face = document.getElementById(faceId);
-
-  // Cleanup previous animations
-  var previousAnimations = face.getElementsByClassName('face-animations');
-  if (previousAnimations.length > 0) {
-    for (var i=0; i<previousAnimations.length; i++) {
-      if (previousAnimations[i].getCurrentTime() > 1) {
-        previousAnimations[i].remove();
+var cleanupAnimationTimer = undefined;
+var cleanupAnimations = function() {
+  if (cleanupAnimationTimer) {
+    window.clearTimeout(cleanupAnimationTimer);
+  }
+  cleanupAnimationTimer = window.setTimeout(function() {
+    var previousAnimations = document.getElementsByClassName('face-animations');
+    if (previousAnimations.length > 0) {
+      for (var i=0; i<previousAnimations.length; i++) {
+        if (previousAnimations[i].getCurrentTime() > 1) {
+          previousAnimations[i].remove();
+        }
       }
     }
-  }
+  }, 1000);
+};
+
+var moveFace = function(faceId, targetX, targetY) {
+  var face = document.getElementById(faceId);
 
   var startPos = getPosition(face);
   if (startPos !== null) {
@@ -187,6 +194,7 @@ var moveFace = function(faceId, targetX, targetY) {
     transform.setAttributeNS(null, 'class', 'face-animations');
     face.appendChild(transform);
     transform.beginElement();
+    cleanupAnimations();
   }
 
   face.setAttributeNS(null, "transform", "translate(" + targetX + " " + targetY + ")");
@@ -250,10 +258,10 @@ var ensureNonOverlapping = function(eltId, otherId) {
  */
 var getPosition = function(elt) {
   var transformProp = elt.getAttribute('transform');
-  if (transformProp === null) {
+  if (transformProp === null || transformProp === undefined) {
     return null;
   }
-  var position = transformProp.match(/translate\(([0-9]+) ([0-9]+)\)/);
+  var position = transformProp.match(/translate\(([0-9.]+) ([0-9.]+)\)/);
   return new Point(position[1], position[2]);
 };
 
@@ -449,12 +457,32 @@ var getLabelContent = function(date, arnaudLocation, ryanLocation) {
   }
 }
 
-var timer;
+var displayDate = function(isoDate) {
+  var date = new Date(isoDate)
+  var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var dayOfWeek = weekdays[date.getDay()];
+  var months = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
+  var month = months[date.getMonth()];
+  var day = date.getDate().toString()
+  if (day === '1' || day === '21' || day === '31') {
+    day = day + 'st';
+  } else if (day === '2' || day === '22') {
+    day = day + 'nd';
+  } else if (day === '3' || day === '23') {
+    day = day + 'rd';
+  } else {
+    day = day + 'th';
+  }
+  document.getElementById('date-display').innerHTML = dayOfWeek + ' ' + month + ' ' + day;
+};
 
+var timer;
+var currentLocations;
 var onSliderChange = function(e) {
   var date = e.target.value;
   var isoDate = dayOfYearToDate(date);
-  updateLabel(isoDate);
+
+  displayDate(isoDate);
 
   // Now let's get the corresponding positions for both of us
   var locationData = document.getElementById('location-data');
@@ -467,39 +495,44 @@ var onSliderChange = function(e) {
       var labelContent = getLabelContent(isoDate, arnaudLocation, ryanLocation);
       updateLabel(labelContent);
 
-      if (arnaudLocation !== ryanLocation) {
-        placePerson(arnaudLocation, 'arnaud');
-        placePerson(ryanLocation, 'ryan');
-        ensureNonOverlapping('arnaud-sad-face', 'ryan-sad-face');
-        hideFace('together-face');
-        hidePlace('together-dot');
-        showFace('arnaud-sad-face');
-        showFace('ryan-sad-face');
-        showPlace('arnaud-dot');
-        showPlace('ryan-dot');
+      if (currentLocations === arnaudLocation + ryanLocation) {
+        return;
       } else {
-        placePerson(arnaudLocation, 'arnaud');
-        placePerson(ryanLocation, 'ryan');
-        placePerson(arnaudLocation, 'together');
+        currentLocations = arnaudLocation + ryanLocation;
+        if (arnaudLocation !== ryanLocation) {
+          placePerson(arnaudLocation, 'arnaud');
+          placePerson(ryanLocation, 'ryan');
+          ensureNonOverlapping('arnaud-sad-face', 'ryan-sad-face');
+          hideFace('together-face');
+          hidePlace('together-dot');
+          showFace('arnaud-sad-face');
+          showFace('ryan-sad-face');
+          showPlace('arnaud-dot');
+          showPlace('ryan-dot');
+        } else {
+          placePerson(arnaudLocation, 'arnaud');
+          placePerson(ryanLocation, 'ryan');
+          placePerson(arnaudLocation, 'together');
 
-        if (isFaceHidden('together-face')) {
-          // If the face "together" was previously hidden, don't show it right away
-          if (timer !== undefined) { clearTimeout(timer); }
-          timer = setTimeout(function() {
+          if (isFaceHidden('together-face')) {
+            // If the face "together" was previously hidden, don't show it right away
+            if (timer !== undefined) { clearTimeout(timer); }
+            timer = setTimeout(function() {
+              showFace('together-face');
+              hideFace('arnaud-sad-face');
+              hideFace('ryan-sad-face');
+              timer = undefined;
+            }, 200);
+          } else {
             showFace('together-face');
             hideFace('arnaud-sad-face');
             hideFace('ryan-sad-face');
-            timer = undefined;
-          }, 200);
-        } else {
-          showFace('together-face');
-          hideFace('arnaud-sad-face');
-          hideFace('ryan-sad-face');
-        }
+          }
 
-        showPlace('together-dot');
-        hidePlace('arnaud-dot');
-        hidePlace('ryan-dot');
+          showPlace('together-dot');
+          hidePlace('arnaud-dot');
+          hidePlace('ryan-dot');
+        }
       }
     } else {
       console.error('Expected 3 <td>s in: ' + locationCells);
