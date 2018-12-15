@@ -262,7 +262,7 @@ var isFaceHidden = function(faceId) {
  * Check if 2 elements are non-overlapping on the x axis
  * If they are, visually separate them out by adjusting their position
  */
-var ensureNonOverlapping = function(eltId, otherId) {
+var positionToPreventOverlap = function(eltId, otherId) {
   var elt = document.getElementById(eltId);
   var other = document.getElementById(otherId);
 
@@ -517,10 +517,10 @@ var onSliderChange = function() {
         if (arnaudLocation !== ryanLocation) {
           placePerson(arnaudLocation, 'arnaud');
           placePerson(ryanLocation, 'ryan');
-          var newPositions = ensureNonOverlapping('arnaud-sad-face', 'ryan-sad-face');
-          if (newPositions.length) {
-            moveFace('arnaud-sad-face', newPositions[0][0], newPositions[0][1]);
-            moveFace('ryan-sad-face', newPositions[1][0], newPositions[1][1]);
+          var newFacePositions = positionToPreventOverlap('arnaud-sad-face', 'ryan-sad-face');
+          if (newFacePositions.length) {
+            moveFace('arnaud-sad-face', newFacePositions[0][0], newFacePositions[0][1]);
+            moveFace('ryan-sad-face', newFacePositions[1][0], newFacePositions[1][1]);
           }
           hideFace('together-face');
           hidePlace('together-dot');
@@ -529,18 +529,18 @@ var onSliderChange = function() {
 
           showPlace('arnaud-dot');
           showPlace('ryan-dot');
-          var newPositions = ensureNonOverlapping('arnaud-dot', 'ryan-dot');
-          if (newPositions.length) {
-            moveLabel('arnaud-dot', newPositions[0][0]);
-            moveLabel('ryan-dot', newPositions[1][0]);
+          var newLabelPositions = positionToPreventOverlap('arnaud-dot', 'ryan-dot');
+          if (newLabelPositions.length) {
+            moveLabel('arnaud-dot', newLabelPositions[0][0]);
+            moveLabel('ryan-dot', newLabelPositions[1][0]);
           }
         } else {
           placePerson(arnaudLocation, 'arnaud');
           placePerson(ryanLocation, 'ryan');
-          var newPositions = ensureNonOverlapping('arnaud-sad-face', 'ryan-sad-face');
-          if (newPositions.length) {
-            moveFace('arnaud-sad-face', newPositions[0][0], newPositions[0][1]);
-            moveFace('ryan-sad-face', newPositions[1][0], newPositions[1][1]);
+          var newFacePositions = positionToPreventOverlap('arnaud-sad-face', 'ryan-sad-face');
+          if (newFacePositions.length) {
+            moveFace('arnaud-sad-face', newFacePositions[0][0], newFacePositions[0][1]);
+            moveFace('ryan-sad-face', newFacePositions[1][0], newFacePositions[1][1]);
           }
           placePerson(arnaudLocation, 'together');
 
