@@ -457,11 +457,32 @@ var getLabelContent = function(date, arnaudLocation, ryanLocation) {
   }
 }
 
+var displayDate = function(isoDate) {
+  var date = new Date(isoDate)
+  var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var dayOfWeek = weekdays[date.getDay()];
+  var months = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
+  var month = months[date.getMonth()];
+  var day = date.getDate().toString()
+  if (day === '1' || day === '21' || day === '31') {
+    day = day + 'st';
+  } else if (day === '2' || day === '22') {
+    day = day + 'nd';
+  } else if (day === '3' || day === '23') {
+    day = day + 'rd';
+  } else {
+    day = day + 'th';
+  }
+  document.getElementById('date-display').innerHTML = dayOfWeek + ' ' + month + ' ' + day;
+};
+
 var timer;
 var currentLocations;
 var onSliderChange = function(e) {
   var date = e.target.value;
   var isoDate = dayOfYearToDate(date);
+
+  displayDate(isoDate);
 
   // Now let's get the corresponding positions for both of us
   var locationData = document.getElementById('location-data');
