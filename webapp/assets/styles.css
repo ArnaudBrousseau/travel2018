@@ -127,6 +127,20 @@ input[type=range] {
   text-align: right;
 }
 
+#fullscreen {
+  background: #fff;
+  border: 1px #999 solid;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px;
+  font-size: 12px;
+}
+#fullscreen a {
+  display: block;
+  text-align: center;
+}
+
 /******************************************************************************
  * Adjustments for mobile devices
  *****************************************************************************/
@@ -143,8 +157,7 @@ input[type=range] {
   }
 }
 
-/* TODO: and (max-width: 800px)? */
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 800px) {
   #landscape-tip {
     display: block;
   }
