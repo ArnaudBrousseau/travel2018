@@ -305,10 +305,8 @@ var placePerson = function(locStr, who) {
  *****************************************************************************/
 
 var setUpSlider = function() {
-  // TODO: see if listening for 'change' is necessary?
-  //document.getElementById('day-slider').addEventListener('change', onSliderChange);
-  document.getElementById('day-slider').addEventListener('input', onSliderInput);
   document.getElementById('day-slider').addEventListener('input', onSliderChange);
+  document.getElementById('day-slider').addEventListener('change', onSliderChange);
   // Populate & Show controls
   populateTimeline();
   document.getElementsByClassName('controls')[0].classList.remove('hidden');
@@ -330,30 +328,21 @@ var populateTimeline = function() {
   }
 };
 
-var moveLabel = function() {
-  var label = document.getElementById('day-indicator');
+var setUpButtons = function() {
   var slider = document.getElementById('day-slider');
 
-  var labelWidth = label.clientWidth;
-
-  var sliderWidth = slider.clientWidth;
-  var sliderOffset = 20;
-  var indicatorPosition = parseInt(
-    (parseInt(slider.value)/parseInt(slider.max)) * sliderWidth
-  );
-
-  if (indicatorPosition + labelWidth < sliderWidth) {
-    // We have space to position our label on the right of the indicator.
-    // Do it.
-    label.style.right = null;
-    label.style.left = sliderOffset + indicatorPosition + 'px';
-  } else {
-    // We have to place our label on the left
-    label.style.left = null;
-    label.style.right = sliderOffset + (sliderWidth - indicatorPosition) + 'px';
-  }
-
-};
+  // No need to check that the value is between 1 and 365. Setting a value of
+  // -2 or 370 will result in the min/max being set since these limits are set
+  // in HTML.
+  document.getElementById('right').addEventListener('click', function() {
+    slider.value = parseInt(slider.value) + 1;
+    onSliderChange();
+  });
+  document.getElementById('left').addEventListener('click', function() {
+    slider.value = parseInt(slider.value) - 1;
+    onSliderChange();
+  });
+}
 
 var showMap = function() {
   plotPlaces();
@@ -436,12 +425,6 @@ var plotFaces = function() {
   hideFace('ryan-sad-face');
 }
 
-var updateLabel = function(content) {
-  var label = document.getElementById('day-indicator');
-  label.innerHTML = content;
-  moveLabel();
-};
-
 /**
  * From "Fontainebleau, France ('48.404676', '2.70162')" to "Fontainebleau"
  */
@@ -478,8 +461,10 @@ var displayDate = function(isoDate) {
 
 var timer;
 var currentLocations;
-var onSliderChange = function(e) {
-  var date = e.target.value;
+var onSliderChange = function() {
+  document.getElementById('day-indicator').classList.add('hidden');
+  var slider = document.getElementById('day-slider');
+  var date = slider.value;
   var isoDate = dayOfYearToDate(date);
 
   displayDate(isoDate);
@@ -493,7 +478,6 @@ var onSliderChange = function(e) {
       var arnaudLocation = locationCells[1].innerHTML;
       var ryanLocation = locationCells[2].innerHTML;
       var labelContent = getLabelContent(isoDate, arnaudLocation, ryanLocation);
-      updateLabel(labelContent);
 
       if (currentLocations === arnaudLocation + ryanLocation) {
         return;
@@ -584,14 +568,6 @@ var padDay = function(day) {
   }
 };
 
-var onSliderInput = function(e) {
-  // "date" is 1 through 365. 2018 isn't a leap year.
-  var date = e.target.value;
-  var isoDate = dayOfYearToDate(date);
-  document.getElementById('day-indicator').innerHTML = isoDate;
-  moveLabel();
-};
-
 var showTable = function() {
   document.getElementById('location-data').classList.remove('hidden');
 };
@@ -634,6 +610,7 @@ var start = function() {
     showTable();
   } else {
     setUpSlider();
+    setUpButtons();
     showMap();
     hideLoader();
     setupTip();

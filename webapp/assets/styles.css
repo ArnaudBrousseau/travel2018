@@ -80,21 +80,29 @@ td {
  * Indicator and range styles
  *****************************************************************************/
 .range-input {
-  padding: 10px 15px 10px 10px;
+  padding: 10px 10px 10px 10px;
 }
 input[type=range] {
   width: 100%;
 }
 
-#day-indicator {
-  display: block;
-  position: absolute;
-  top: 32px;
-}
-#date-display {
+#date-display-group {
   font-weight: bold;
-  font-size: 30px;
-  text-shadow: 0 -2px 1px #c1dedd, 0px 2px 1px #c1dedd, -2px 0px 1px #c1dedd;
+  font-size: 42px;
+  text-shadow: 0 -2px 0 #fff, 0px 2px 0 #fff, -2px 0px 0 #fff, -1px -1px 0 #fff, 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff;
+}
+
+#left, #right {
+  cursor: pointer;
+}
+
+.disable-selection {
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+  user-select: none; /* standard. Sort of. */
 }
 
 /******************************************************************************
