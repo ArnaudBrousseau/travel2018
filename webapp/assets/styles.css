@@ -165,4 +165,7 @@ input[type=range] {
   #landscape-tip {
     display: block;
   }
+  #fullscreen {
+    display: none;
+  }
 }
