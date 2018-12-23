@@ -1,10 +1,12 @@
 # Traveling Through 2018
 
+This repo contains the code necessary to generate what's hosted at https://arnaudbrousseau.github.io/travel2018/
+
 ## Purpose
 
-This repo tries to accomplish a bunch of different things:
+I tried to accomplish a bunch of different things here:
 
-* visualize travel data from 2018
+* visualize travel data from 2018 (duh!)
 * explore the process of map creation from pure data (see "Map", below)
 * play with the Google Spreadsheet API instead of having to deal with a DB
   (see "Data" below)
