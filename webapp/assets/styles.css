@@ -51,11 +51,13 @@ td {
  * Controls container
  *****************************************************************************/
 .controls {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  position: fixed;
+  bottom: 15px;
+  left: 25px;
+  width: 90%; /* for browsers without CSS calc support */
+  width: calc(100% - 50px);
   opacity: 1;
+  background: #ffffffc2;
 }
 
 #timeline {
@@ -139,7 +141,7 @@ input[type=range] {
   background: #fff;
   border: 1px #999 solid;
   position: fixed;
-  bottom: 10px;
+  top: 10px;
   right: 10px;
   padding: 10px;
   font-size: 12px;
