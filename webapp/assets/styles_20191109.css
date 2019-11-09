@@ -1,0 +1,177 @@
+@namespace svg "http://www.w3.org/2000/svg";
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.map {
+  background: url('world_bg.svg') top center no-repeat;
+  background-size: 100% 100%;
+  opacity: 1;
+  margin: 60px auto;
+  display: block;
+}
+
+.hidden {
+  opacity: 0 !important;
+}
+
+.removed {
+  display: none !important;
+}
+
+footer {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+footer a { color: #222; cursor: pointer; }
+
+/******************************************************************************
+ * Table styles
+ *****************************************************************************/
+
+.together {
+  background-color: #c6f9c6;
+}
+table {
+  text-align:center;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 1200px;
+  border-collapse: collapse;
+  margin: 60px auto;
+}
+td {
+  border: 2px solid white;
+  padding: 4px;
+}
+
+/******************************************************************************
+ * Controls container
+ *****************************************************************************/
+.controls {
+  position: fixed;
+  bottom: 15px;
+  left: 25px;
+  width: 90%; /* for browsers without CSS calc support */
+  width: calc(100% - 50px);
+  opacity: 1;
+  background: #ffffffc2;
+}
+
+#timeline {
+  margin-bottom: -7px;
+  margin-left: 0px;
+  position: relative;
+  height: 13px;
+  width: 100%;
+  z-index: -1;
+}
+
+#timeline span {
+  position: absolute;
+  height: 12px;
+  display: block;
+  width: 2px;
+  background-color: #e89f9f;
+}
+
+#timeline span.together {
+  background-color: #b1f5b1;
+}
+
+
+/******************************************************************************
+ * Indicator and range styles
+ *****************************************************************************/
+.range-input {
+  padding: 10px 10px 10px 10px;
+}
+input[type=range] {
+  width: 100%;
+}
+
+#date-display-group {
+  font-weight: bold;
+  font-size: 42px;
+  text-shadow: 0 -1px 0 #fff, 0px 1px 0 #fff, -1px 0px 0 #fff, -1px -1px 0 #fff, 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff;
+}
+
+#left, #right {
+  cursor: pointer;
+}
+
+#places {
+  text-shadow: 0 -1px 0 #fff, 0px 1px 0 #fff, -1px 0px 0 #fff, -1px -1px 0 #fff, 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff;
+}
+
+.disable-selection {
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+  user-select: none; /* standard. Sort of. */
+}
+
+/******************************************************************************
+ * Tip
+ *****************************************************************************/
+#landscape-tip {
+  display: none;
+  background: #fff;
+  border: 1px #999 solid;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  padding: 10px;
+  font-size: 12px;
+}
+#landscape-tip p {
+  margin: 0;
+}
+#landscape-tip a {
+  display: block;
+  margin-top: 10px;
+  text-align: right;
+}
+
+#fullscreen {
+  background: #fff;
+  border: 1px #999 solid;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  font-size: 12px;
+}
+#fullscreen a {
+  display: block;
+  text-align: center;
+}
+
+/******************************************************************************
+ * Adjustments for mobile devices
+ *****************************************************************************/
+@media (max-width:800px) {
+  #timeline span {
+    width: 3px;
+  }
+  #day-indicator {
+    font-size: 12px;
+  }
+  footer {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 800px) {
+  #landscape-tip {
+    display: block;
+  }
+  #fullscreen {
+    display: none;
+  }
+}
